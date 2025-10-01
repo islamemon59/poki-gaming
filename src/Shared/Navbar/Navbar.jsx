@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaUser, FaSearch } from "react-icons/fa"; // Using Font Awesome icons from react-icons
 import { Link } from "react-router";
+import UserSlider from "../../Components/UserSlider/UserSlider";
 
 const Navbar = () => {
   // The color #009cff is defined as a custom utility for Tailwind below
   const iconColor = "#009cff";
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     // Outer container with the light teal-blue background effect
@@ -35,15 +41,19 @@ const Navbar = () => {
         {/* Right Side: Icons */}
         <div className="flex flex-col gap-5">
           {/* User Icon */}
-          <Link className=" cursor-pointer">
+          <button onClick={toggleSidebar} className=" cursor-pointer">
             <FaUser className="w-5 h-5" style={{ color: iconColor }} />
-          </Link>
+          </button>
+
+
+
 
           {/* Search Icon */}
-          <Link className=" cursor-pointer">
+          <button className=" cursor-pointer">
             <FaSearch className="w-5 h-5" style={{ color: iconColor }} />
-          </Link>
+          </button>
         </div>
+            <UserSlider isOpen={isOpen} toggleSidebar={toggleSidebar} />
       </nav>
     </div>
   );

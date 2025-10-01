@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { FaTiktok, FaFacebookF, FaYoutube, FaGlobe } from "react-icons/fa"; // Icons for social media and language
 import { IoIosArrowDown } from "react-icons/io";
