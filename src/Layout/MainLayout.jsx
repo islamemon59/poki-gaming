@@ -4,7 +4,9 @@ import { Outlet } from 'react-router';
 const MainLayout = () => {
     return (
         <div>
-            <Outlet/>
+            <div className='min-h-screen bg-[url(./bg-diamante.svg)]'>
+                <Outlet/>
+            </div>
         </div>
     );
 };
