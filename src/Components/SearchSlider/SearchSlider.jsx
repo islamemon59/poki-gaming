@@ -25,12 +25,9 @@ const SearchSlider = ({ isSlider, toggleSlider }) => {
         aria-labelledby="sidebar-title"
       >
         {/* Poki Logo (Text-based as per requirement) */}
-        <h2
-          id="sidebar-title"
-          className="text-3xl font-extrabold text-blue-600 tracking-wider"
-        >
-          Poki
-        </h2>
+        <div className="flex items-center justify-center mt-6 space-x-2 mx-6">
+          <img src="logo.png" alt="" />
+        </div>
 
         {/* Close Icon Button (on the right) */}
         <button
