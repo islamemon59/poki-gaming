@@ -8,3 +8,10 @@
   box-shadow: 0 7px 10px 5px rgba(0, 0, 0, 0.25);
   transform: translateY(-3px); /* lift + zoom */
 }
+/* tailwind approach using group-hover */
+.button-wrapper:hover .microsoft-icon rect {
+  fill: white;
+}
+.google:hover .google-icon path {
+  fill: white;
+}
