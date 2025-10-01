@@ -1,7 +1,6 @@
-import { X } from "lucide-react";
+import { IoIosArrowBack } from "react-icons/io";
 
-const UserSlider = ({isOpen, toggleSidebar}) => {
-
+const UserSlider = ({ isOpen, toggleSidebar }) => {
   return (
     <div className="min-h-screen bg-gray-50 font-inter">
       {/* 2a. Backdrop Overlay */}
@@ -18,39 +17,32 @@ const UserSlider = ({isOpen, toggleSidebar}) => {
 
       {/* 2b. Drawer/Slider Content */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 max-w-full bg-[#83ffe7] shadow-2xl z-50 transform transition-transform duration-300 ease-in-out
-          ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          sm:w-80 md:w-96
+        className={`fixed top-0 left-0 h-full w-full max-w-[350px] sm:max-w-lg lg:max-w-xl bg-[#83ffe7] shadow-2xl z-50 transform transition-transform duration-300 ease-in-out
+          ${isOpen ? "translate-x-0" : "-translate-x-[800px]"}
         `}
         role="dialog"
         aria-modal="true"
         aria-labelledby="sidebar-title"
       >
-        {/* Slider Header: Poki Logo and Close Button */}
+        {/* Poki Logo (Text-based as per requirement) */}
+        <h2
+          id="sidebar-title"
+          className="text-3xl font-extrabold text-blue-600 tracking-wider"
+        >
+          Poki
+        </h2>
 
-          {/* Poki Logo (Text-based as per requirement) */}
-          <h2
-            id="sidebar-title"
-            className="text-3xl font-extrabold text-blue-600 tracking-wider"
-          >
-            Poki
-          </h2>
-
-          {/* Close Icon Button (on the right) */}
-          <button
-            onClick={toggleSidebar}
-            className="p-2 rounded-full text-gray-500 hover:text-red-600 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500"
-            aria-label="Close menu"
-          >
-            {/* Replaced FaTimes with Lucide's X icon */}
-            <X className="w-6 h-6" />
-          </button>
-
+        {/* Close Icon Button (on the right) */}
+        <button
+          onClick={toggleSidebar}
+          className="p-4 rounded-full text-gray-500 absolute top-6 -right-6 bg-white transition-all duration-300 custom-shadow"
+          aria-label="Close menu"
+        >
+          <IoIosArrowBack className="w-8 h-8" />
+        </button>
 
         {/* Slider Body Content */}
-        <div className="p-6">
-
-        </div>
+        <div className="p-6"></div>
       </div>
     </div>
   );

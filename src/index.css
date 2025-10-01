@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+.custom-shadow {
+  box-shadow: 0 7px 10px 4px rgba(0, 0, 0, 0.2);
+}
+
+.custom-shadow:hover {
+  box-shadow: 0 7px 10px 5px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px); /* lift + zoom */
+}
