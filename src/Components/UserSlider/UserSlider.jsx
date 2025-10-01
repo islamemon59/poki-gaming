@@ -1,4 +1,5 @@
 import { IoIosArrowBack } from "react-icons/io";
+import SocialLoginButton from "../SocialLoginButton/SocialLoginButton";
 
 const UserSlider = ({ isOpen, toggleSidebar }) => {
   return (
@@ -40,7 +41,10 @@ const UserSlider = ({ isOpen, toggleSidebar }) => {
         </button>
 
         {/* Slider Body Content */}
-        <div className="p-6"></div>
+        <div className="p-6 mx-auto">
+          {" "}
+          <SocialLoginButton />
+        </div>
       </div>
     </div>
   );

@@ -21,30 +21,29 @@ const Navbar = () => {
     // Outer container with the light teal-blue background effect
     <div className="p-4 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl shadow-xl fixed top-3 left-3">
       {/* Main NavBar Container */}
-<nav className="flex items-center justify-between h-16 bg-white rounded-lg shadow-inner w-42">
-  {/* Left Side: Logo */}
-  <div className="flex items-center flex-1">
-    <img src="logo.png" className="w-28" alt="logo" />
-  </div>
+      <nav className="flex items-center justify-between h-16 bg-white rounded-lg shadow-inner w-42">
+        {/* Left Side: Logo */}
+        <div className="flex items-center flex-1">
+          <img src="logo.png" className="w-28" alt="logo" />
+        </div>
 
-  {/* Right Side: Icons */}
-  <div className="flex items-center flex-col gap-6">
-    {/* User Icon */}
-    <button onClick={toggleSidebar} className="cursor-pointer">
-      <FaUser className="w-5 h-5" style={{ color: iconColor }} />
-    </button>
+        {/* Right Side: Icons */}
+        <div className="flex items-center flex-col gap-6">
+          {/* User Icon */}
+          <button onClick={toggleSidebar} className="cursor-pointer">
+            <FaUser className="w-5 h-5" style={{ color: iconColor }} />
+          </button>
 
-    {/* Search Icon */}
-    <button onClick={toggleSlider} className="cursor-pointer">
-      <FaSearch className="w-5 h-5" style={{ color: iconColor }} />
-    </button>
-  </div>
+          {/* Search Icon */}
+          <button onClick={toggleSlider} className="cursor-pointer">
+            <FaSearch className="w-5 h-5" style={{ color: iconColor }} />
+          </button>
+        </div>
 
-  {/* Sliders */}
-  <UserSlider isOpen={isOpen} toggleSidebar={toggleSidebar} />
-  <SearchSlider isSlider={isSlider} toggleSlider={toggleSlider} />
-</nav>
-
+        {/* Sliders */}
+        <UserSlider isOpen={isOpen} toggleSidebar={toggleSidebar} />
+        <SearchSlider isSlider={isSlider} toggleSlider={toggleSlider} />
+      </nav>
     </div>
   );
 };
