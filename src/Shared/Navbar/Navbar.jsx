@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import { FaUser, FaSearch } from "react-icons/fa"; // Using Font Awesome icons from react-icons
 import { Link } from "react-router";
 import UserSlider from "../../Components/UserSlider/UserSlider";
+import SearchSlider from "../../Components/SearchSlider/SearchSlider";
 
 const Navbar = () => {
   // The color #009cff is defined as a custom utility for Tailwind below
   const iconColor = "#009cff";
   const [isOpen, setIsOpen] = useState(false);
+  const [isSlider, setIsSlider] = useState(false)
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+  };
+  const toggleSlider = () => {
+    setIsSlider(!isSlider);
   };
 
   return (
@@ -49,11 +54,12 @@ const Navbar = () => {
 
 
           {/* Search Icon */}
-          <button className=" cursor-pointer">
+          <button onClick={toggleSlider} className=" cursor-pointer">
             <FaSearch className="w-5 h-5" style={{ color: iconColor }} />
           </button>
         </div>
             <UserSlider isOpen={isOpen} toggleSidebar={toggleSidebar} />
+            <SearchSlider isSlider={isSlider} toggleSlider={toggleSlider} />
       </nav>
     </div>
   );
