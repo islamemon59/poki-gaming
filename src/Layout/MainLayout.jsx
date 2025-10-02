@@ -7,7 +7,7 @@ const MainLayout = () => {
   return (
     <div>
       <Navbar />
-      <div className="min-h-screen bg-[url(./bg-diamante.svg)]">
+      <div className="min-h-screen bg-[#83ffe7] bg-[url(./bg-diamante.svg)]">
         <Outlet />
       </div>
       <Footer />
