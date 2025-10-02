@@ -1,4 +1,5 @@
 import { IoIosArrowBack } from "react-icons/io";
+import SearchBar from "../SearchBar/SearchBar";
 
 const SearchSlider = ({ isSlider, toggleSlider }) => {
   return (
@@ -17,7 +18,7 @@ const SearchSlider = ({ isSlider, toggleSlider }) => {
 
       {/* 2b. Drawer/Slider Content */}
       <div
-        className={`fixed top-0 left-0 h-full w-full max-w-[350px] sm:max-w-lg lg:max-w-xl bg-[#83ffe7] shadow-2xl z-50 transform transition-transform duration-300 ease-in-out
+        className={`fixed top-0 left-0 h-full w-full max-w-[350px] sm:max-w-lg lg:max-w-2xl bg-[#83ffe7] shadow-2xl z-50 transform transition-transform duration-500 ease-in-out
           ${isSlider ? "translate-x-0" : "-translate-x-[800px]"}
         `}
         role="dialog"
@@ -39,7 +40,9 @@ const SearchSlider = ({ isSlider, toggleSlider }) => {
         </button>
 
         {/* Slider Body Content */}
-        <div className="p-6"></div>
+        <div className="p-6">
+          <SearchBar />
+        </div>
       </div>
     </div>
   );
