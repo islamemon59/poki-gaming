@@ -1,8 +1,6 @@
-import React from "react";
 import { Link } from "react-router";
 
 const GameCard = ({ game, setHovered, hovered, index }) => {
-  console.log(game);
   return (
     <Link
       key={index}
@@ -15,7 +13,7 @@ const GameCard = ({ game, setHovered, hovered, index }) => {
       <img
         src={game?.thumbnail}
         alt={game?.title}
-        className={`w-full h-40 object-cover transition duration-300 ${
+        className={`w-full h-full object-cover transition duration-300 ${
           hovered === index ? "opacity-0" : "opacity-100"
         }`}
       />
@@ -30,8 +28,11 @@ const GameCard = ({ game, setHovered, hovered, index }) => {
         ></iframe>
       )}
 
-      {/* Game Title */}
-      <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-sm p-1 text-center">
+      {/* Game Title with animation */}
+      <div
+        className={`absolute bottom-0 left-0 w-full font-bold bg-opacity-60 text-white text-[16px] p-2 text-center transform transition-transform duration-500
+        ${hovered === index ? "translate-y-0" : "translate-y-full"}`}
+      >
         {game?.title}
       </div>
     </Link>
