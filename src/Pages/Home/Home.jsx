@@ -1,8 +1,10 @@
 import React from 'react';
+import Games from '../../Components/Games/Games';
 
 const Home = () => {
     return (
         <div>
+            <Games/>
         </div>
     );
 };
