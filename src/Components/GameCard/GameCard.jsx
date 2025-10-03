@@ -4,7 +4,7 @@ const GameCard = ({ game, setHovered, hovered, index }) => {
   return (
     <Link
       key={index}
-      href={game?.link}
+      to={`/games/${game._id}`}
       className="relative group rounded-xl overflow-hidden shadow-lg"
       onMouseEnter={() => setHovered(index)}
       onMouseLeave={() => setHovered(null)}
@@ -30,7 +30,7 @@ const GameCard = ({ game, setHovered, hovered, index }) => {
 
       {/* Game Title with animation */}
       <div
-        className={`absolute bottom-0 left-0 w-full font-bold bg-opacity-60 text-white text-[16px] p-2 text-center transform transition-transform duration-500
+        className={`absolute bottom-3 left-0 w-full font-bold bg-opacity-60 text-white text-[16px] p-2 text-center transform transition-transform duration-500
         ${hovered === index ? "translate-y-0" : "translate-y-full"}`}
       >
         {game?.title}

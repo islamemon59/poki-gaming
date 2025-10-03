@@ -24,7 +24,7 @@ const Navbar = () => {
       <nav className="flex items-center justify-between h-16 bg-white rounded-lg shadow-inner w-42">
         {/* Left Side: Logo */}
         <div className="flex items-center flex-1">
-          <img src="logo.png" className="w-28" alt="logo" />
+          <img src="./logo.png" className="w-28" alt="logo" />
         </div>
 
         {/* Right Side: Icons */}
