@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FaUser, FaSearch } from "react-icons/fa"; // Using Font Awesome icons from react-icons
-import { Link } from "react-router";
 import UserSlider from "../../Components/UserSlider/UserSlider";
 import SearchSlider from "../../Components/SearchSlider/SearchSlider";
+import logo from "../../assets/logo.png"
 
 const Navbar = () => {
   // The color #009cff is defined as a custom utility for Tailwind below
@@ -24,7 +24,7 @@ const Navbar = () => {
       <nav className="flex items-center justify-between h-16 bg-white rounded-lg shadow-inner w-42">
         {/* Left Side: Logo */}
         <div className="flex items-center flex-1">
-          <img src="./logo.png" className="w-28" alt="logo" />
+          <img src={logo} className="w-28" alt="logo" />
         </div>
 
         {/* Right Side: Icons */}

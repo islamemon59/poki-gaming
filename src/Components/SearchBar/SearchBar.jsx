@@ -1,10 +1,11 @@
 import { FaSearch } from "react-icons/fa";
+import logo from "../../assets/logo2.png"
 
 const SearchBar = () => {
   return (
     <div>
       <div className="flex justify-between items-center bg-white px-4 rounded-2xl">
-        <img src="logo2.png" alt="second logo" />
+        <img src={logo} alt="second logo" />
         <input
           type="text"
           placeholder="What are you playing today?"

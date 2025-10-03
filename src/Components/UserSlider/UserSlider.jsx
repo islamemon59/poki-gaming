@@ -1,5 +1,6 @@
 import { IoIosArrowBack } from "react-icons/io";
 import SocialLoginButton from "../SocialLoginButton/SocialLoginButton";
+import logo from "../../assets/logo.png"
 
 const UserSlider = ({ isOpen, toggleSidebar }) => {
   return (
@@ -28,7 +29,7 @@ const UserSlider = ({ isOpen, toggleSidebar }) => {
         {/* Poki Logo (Text-based as per requirement) */}
         {/* Left Side: Logo */}
         <div className="flex items-center justify-center mt-6 space-x-2 mx-6">
-          <img src="logo.png" alt="" />
+          <img src={logo} alt="" />
         </div>
 
         {/* Close Icon Button (on the right) */}
