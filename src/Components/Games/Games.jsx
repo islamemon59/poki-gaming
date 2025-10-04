@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
 import GameCard from "../GameCard/GameCard";
+import Masonry from "react-masonry-css";
 
 const Games = () => {
   const [hovered, setHovered] = useState(null);
@@ -14,17 +15,28 @@ const Games = () => {
     },
   });
   console.log(games);
+    const breakpointColumns = {
+    default: 6,
+    1100: 4,
+    700: 3,
+    500: 2,
+  };
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 p-6">
+<Masonry
+      breakpointCols={breakpointColumns}
+      className="flex gap-4 p-6"
+      columnClassName="bg-clip-padding"
+    >
       {games?.map((game, index) => (
         <GameCard
+          key={index}
           game={game}
           index={index}
           hovered={hovered}
           setHovered={setHovered}
         />
       ))}
-    </div>
+    </Masonry>
   );
 };
 

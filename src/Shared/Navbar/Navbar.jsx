@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaUser, FaSearch } from "react-icons/fa"; // Using Font Awesome icons from react-icons
 import UserSlider from "../../Components/UserSlider/UserSlider";
 import SearchSlider from "../../Components/SearchSlider/SearchSlider";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   // The color #009cff is defined as a custom utility for Tailwind below
@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     // Outer container with the light teal-blue background effect
-    <div className="p-4 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl shadow-xl fixed top-3 left-3">
+    <div className="p-4 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl shadow-xl z-50 fixed top-3 left-3">
       {/* Main NavBar Container */}
       <nav className="flex items-center justify-between h-16 bg-white rounded-lg shadow-inner w-42">
         {/* Left Side: Logo */}
