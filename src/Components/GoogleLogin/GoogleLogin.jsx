@@ -29,7 +29,7 @@ export default function GoogleButton() {
     <button
       onClick={handleGoogleLogin}
       aria-label={"Sign in with Google"}
-      className="flex items-center gap-3 w-full justify-center mx-auto mt-3 px-5 py-3 rounded-full bg-white shadow-md hover:shadow-lg active:scale-95 transition transform text-sm font-medium"
+      className="flex items-center gap-3 w-full justify-center mx-auto mt-3 px-5 py-3 rounded-full bg-gray-300 shadow-md hover:shadow-lg active:scale-95 transition transform text-sm font-medium"
       style={{ boxShadow: "0 6px 18px rgba(16,24,40,0.12)" }}
     >
       {/* Official multi-color G */}
