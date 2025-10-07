@@ -1,25 +1,20 @@
-import React, { useState } from "react";
-import { Link } from "react-router";
+import { useState } from "react";
 import Login from "../Login/Login";
+import Register from "../Register/Regsiter";
 
 const SocialLoginButton = () => {
   const [isLogin, setIsLogin] = useState(false);
 
-  const toggleLogin = () => {
-    setIsLogin(!isLogin)
-  }
-
+  const toggleForm = () => setIsLogin(!isLogin);
   return (
-    <div className="max-w-md bg-white rounded-2xl p-6 mx-auto mt-6">
-      <div className="flex justify-between items-center">
-        <div className={`text-center flex-1 font-bold text-[#009cff] pb-2.5 ${isLogin && "drop-shadow-2xl"}`}>
-          <button onClick={toggleLogin} >Register</button>
-        </div>
-        <div className="flex-1 text-center font-bold text-[#009cff] pb-2.5">
-          <button onClick={toggleLogin} >Login</button>
-        </div>
+    <div className="w-full rounded-2xl p-6 mx-auto mt-6">
+      <div>
+        {isLogin ? (
+          <Login toggleForm={toggleForm} />
+        ) : (
+          <Register toggleForm={toggleForm} />
+        )}
       </div>
-      <Login isLogin={isLogin} />
     </div>
   );
 };
