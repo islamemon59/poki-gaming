@@ -1,6 +1,6 @@
 import { IoIosArrowBack } from "react-icons/io";
-import SocialLoginButton from "../SocialLoginButton/SocialLoginButton";
 import logo from "../../assets/logo.png"
+import Authentication from "../Authentication/Authentication";
 
 const UserSlider = ({ isOpen, toggleSidebar }) => {
   return (
@@ -44,7 +44,7 @@ const UserSlider = ({ isOpen, toggleSidebar }) => {
         {/* Slider Body Content */}
         <div className="p-6 mx-auto">
           {" "}
-          <SocialLoginButton />
+          <Authentication/>
         </div>
       </div>
     </div>
