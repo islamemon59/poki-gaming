@@ -3,10 +3,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import GameCard from "./GameCard/GameCard";
 import Masonry from "react-masonry-css";
+import Loader from "../../Shared/Loader/Loader";
 
 const Games = () => {
   const [hovered, setHovered] = useState(null);
-  const { data: games } = useQuery({
+  const { data: games, isLoading } = useQuery({
     queryKey: ["data"],
     queryFn: async () => {
       const { data } = await axios.get("http://localhost:5000/games");
@@ -14,16 +15,10 @@ const Games = () => {
       return data;
     },
   });
-  console.log(games);
-    const breakpointColumns = {
-    default: 6,
-    1100: 4,
-    700: 3,
-    500: 2,
-  };
+
+  if(isLoading) return <Loader/>
   return (
-<Masonry
-      breakpointCols={breakpointColumns}
+<div
       className="flex gap-4 p-6"
       columnClassName="bg-clip-padding"
     >
@@ -36,7 +31,7 @@ const Games = () => {
           setHovered={setHovered}
         />
       ))}
-    </Masonry>
+    </div>
   );
 };
 

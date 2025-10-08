@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 const GameCard = ({ game, setHovered, hovered, index }) => {
   return (
-    <div className="mb-4 break-inside-avoid">
+    <div className="">
       <Link
         key={index}
         to={`/games/${game._id}`}
@@ -19,7 +19,7 @@ const GameCard = ({ game, setHovered, hovered, index }) => {
 
         {/* Game Title with animation */}
         <div
-          className={`absolute bottom-3 left-0 w-full font-bold bg-opacity-60 text-white text-[18px] p-2 text-center transform transition-transform duration-500
+          className={`absolute text-xs bottom-1 left-0 w-full font-bold bg-opacity-60 text-white text-center transform transition-transform duration-500
           ${hovered === index ? "translate-y-0" : "translate-y-full"}`}
         >
           {game?.title}
