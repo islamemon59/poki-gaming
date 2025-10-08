@@ -20,7 +20,6 @@ const Games = () => {
   return (
 <div
       className="flex gap-4 p-6"
-      columnClassName="bg-clip-padding"
     >
       {games?.map((game, index) => (
         <GameCard

@@ -2,13 +2,17 @@ import { FaUserEdit, FaEnvelope } from "react-icons/fa";
 import useAuth from "../../../Hooks/useAuth";
 import LogoutButton from "../LogoutButton/LogoutButton";
 
-export default function UserProfile() {
+export default function UserProfile({ setIsUpdate }) {
   const { user } = useAuth();
   const adminData = {
     name: `${user?.displayName}`,
     email: `${user?.email}`,
     location: "Dhaka, Bangladesh",
     avatarUrl: `${user?.photoURL}`, // Replace with actual image URL
+  };
+
+  const handleUpdate = () => {
+    setIsUpdate(true);
   };
 
   return (
@@ -18,6 +22,7 @@ export default function UserProfile() {
         <div className="h-20 bg-gradient-to-br relative">
           {/* Edit Button */}
           <button
+            onClick={handleUpdate}
             title="Edit Profile"
             className="absolute top-4 right-4 p-2 rounded-full bg-[#2E7A7A]/40 hover:bg-[#2E7A7A] text-white transition-colors duration-300"
           >
