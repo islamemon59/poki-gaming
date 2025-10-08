@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
-import GameCard from "../GameCard/GameCard";
+import GameCard from "./GameCard/GameCard";
 import Masonry from "react-masonry-css";
 
 const Games = () => {

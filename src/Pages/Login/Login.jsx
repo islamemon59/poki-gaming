@@ -1,40 +1,39 @@
 import { useState } from "react";
-import { FiMail, FiLock, FiUser } from "react-icons/fi";
+import { FiMail, FiLock } from "react-icons/fi";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
-import GoogleButton from "../GoogleLogin/GoogleLogin";
+import GoogleButton from "../../Shared/GoogleLogin/GoogleLogin";
 
-export default function Register({toggleForm}) {
+export default function Login({toggleForm}) {
   const [showPassword, setShowPassword] = useState(false);
   const [isValue, setIsValue] = useState("");
-  const { createUser } = useAuth();
+  const { signInUser } = useAuth();
   const navigate = useNavigate();
 
-  const handleRegister = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    console.log(email, password);
 
     try {
-      const res = await createUser(email, password);
+      const res = await signInUser(email, password);
+      console.log(res);
       if (res.user) {
         Swal.fire({
-          title: "Registration Successful",
+          title: "Successfully Login",
           icon: "success",
           draggable: true,
         });
         navigate("/");
         form.reset();
       }
-      console.log(res);
     } catch (error) {
       console.log(error);
-      toast.error(`${error?.message}`);
+      toast.error(`${error.message}`);
     }
   };
 
@@ -42,28 +41,10 @@ export default function Register({toggleForm}) {
     <div className="flex items-center justify-center">
       <div className="bg-white backdrop-blur-xl shadow-2xl rounded-2xl p-8 w-full max-w-md border border-white/30">
         <h2 className="text-3xl font-bold text-[#002b50] text-center mb-6">
-          Create Account 🌱
+          Welcome Back 👋
         </h2>
-
-        <form onSubmit={handleRegister} className="space-y-5">
-          {/* Name */}
-          <div className="form-control">
-            <label className="label">
-              <span className="text-[#002b50] font-semibold">Full Name</span>
-            </label>
-            <div className="relative">
-              <FiUser className="absolute left-3 top-3 text-[#002b50] text-xl" />
-              <input
-                name="name"
-                type="text"
-                placeholder="John Doe"
-                className="input input-bordered w-full pl-10 bg-white/30 text-gray-700 placeholder-[#002b50] focus:outline-none focus:ring-2 focus:ring-[#EDF6F8]"
-                required
-              />
-            </div>
-          </div>
-
-          {/* Email */}
+        <form onSubmit={handleLogin} className="space-y-5">
+          {/* Email Input */}
           <div className="form-control">
             <label className="label">
               <span className="text-[#002b50] font-semibold">Email</span>
@@ -74,13 +55,13 @@ export default function Register({toggleForm}) {
                 name="email"
                 type="email"
                 placeholder="your@email.com"
-                className="input input-bordered w-full pl-10 bg-white/30 text-gray-700 placeholder-[#002b50] focus:outline-none focus:ring-2 focus:ring-[#EDF6F8]"
+                className="input input-bordered w-full text-gray-700 pl-10 bg-white/30  placeholder-[#002b50] focus:outline-none focus:ring-2 font-medium focus:ring-[#EDF6F8]"
                 required
               />
             </div>
           </div>
 
-          {/* Password */}
+          {/* Password Input */}
           <div className="form-control">
             <label className="label">
               <span className="text-[#002b50] font-semibold">Password</span>
@@ -107,25 +88,31 @@ export default function Register({toggleForm}) {
             </div>
           </div>
 
+          {/* Forgot Password */}
+          <div className="text-right">
+            <a href="#" className="text-sm text-[#002b50] hover:underline">
+              Forgot password?
+            </a>
+          </div>
+
           {/* Submit Button */}
           <button
             type="submit"
             className="btn w-full bg-[#2E7A7A] hover:bg-[#002b50] text-white font-semibold text-lg border-none shadow-lg"
           >
-            Register
+            Login
           </button>
 
           {/* Divider */}
           <div className="divider text-[#002b50]">OR</div>
-
-          {/* Login Link */}
+          {/* Register Link */}
           <p className="text-center text-[#002b50]/80 mt-4">
-            Already have an account?{" "}
+            Don’t have an account?{" "}
             <button
               onClick={toggleForm}
               className="text-[#002b50] font-semibold hover:underline"
             >
-              Login
+              Sign up
             </button>
           </p>
         </form>

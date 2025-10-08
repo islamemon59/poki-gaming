@@ -1,18 +1,19 @@
 import { useState } from "react";
-import Login from "../Login/Login";
-import Register from "../Register/Regsiter";
-import useAuth from "../../Hooks/useAuth";
-import UserProfile from "../UserProfile/UserProfile";
+import useAuth from "../Hooks/useAuth";
+import UserProfile from "../Components/UserSlider/UserProfile/UserProfile";
+import Loader from "../Shared/Loader/Loader";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Regsiter";
 
 const Authentication = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const [isLogin, setIsLogin] = useState(false);
 
   const toggleForm = () => setIsLogin(!isLogin);
   return (
     <div className="w-full rounded-2xl p-6 mx-auto mt-6">
       {user ? (
-        <UserProfile />
+        <div>{loading ? <Loader /> : <UserProfile />}</div>
       ) : (
         <div>
           {isLogin ? (

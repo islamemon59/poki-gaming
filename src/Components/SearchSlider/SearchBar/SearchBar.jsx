@@ -1,5 +1,5 @@
 import { FaSearch } from "react-icons/fa";
-import logo from "../../assets/logo2.png"
+import logo from "../../../assets/logo2.png"
 
 const SearchBar = () => {
   return (

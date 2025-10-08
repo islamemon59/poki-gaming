@@ -1,35 +1,14 @@
-import {
-  FaUserEdit,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaCalendarAlt,
-  FaSignOutAlt,
-} from "react-icons/fa";
-import useAuth from "../../Hooks/useAuth";
-import Swal from "sweetalert2";
-import toast from "react-hot-toast";
+import { FaUserEdit, FaEnvelope } from "react-icons/fa";
+import useAuth from "../../../Hooks/useAuth";
+import LogoutButton from "../LogoutButton/LogoutButton";
 
 export default function UserProfile() {
-  const { user, signOutUser } = useAuth();
+  const { user } = useAuth();
   const adminData = {
     name: `${user?.displayName}`,
     email: `${user?.email}`,
     location: "Dhaka, Bangladesh",
     avatarUrl: `${user?.photoURL}`, // Replace with actual image URL
-  };
-
-  const handleLogout = () => {
-    signOutUser()
-      .then(() => {
-        Swal.fire({
-          title: "Logout Successful",
-          icon: "success",
-          draggable: true,
-        });
-      })
-      .catch((error) => {
-        toast.error(`${error}`);
-      });
   };
 
   return (
@@ -40,18 +19,12 @@ export default function UserProfile() {
           {/* Edit Button */}
           <button
             title="Edit Profile"
-            className="absolute top-4 right-4 p-2 rounded-full bg-[#2E7A7A] text-white hover:bg-white/40 transition duration-200"
+            className="absolute top-4 right-4 p-2 rounded-full bg-[#2E7A7A]/40 hover:bg-[#2E7A7A] text-white transition-colors duration-300"
           >
             <FaUserEdit className="text-xl" />
           </button>
 
-          <button
-            title="Logout"
-            onClick={handleLogout}
-            className="absolute top-4 left-4 p-2 rounded-full bg-red-300 text-white hover:bg-red-500 transition duration-200"
-          >
-            <FaSignOutAlt className="text-xl" />
-          </button>
+          <LogoutButton />
         </div>
 
         {/* Profile Image */}

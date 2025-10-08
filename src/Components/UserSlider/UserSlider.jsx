@@ -1,6 +1,6 @@
 import { IoIosArrowBack } from "react-icons/io";
 import logo from "../../assets/logo.png"
-import Authentication from "../Authentication/Authentication";
+import Authentication from "../../Authentication/Authentication";
 
 const UserSlider = ({ isOpen, toggleSidebar }) => {
   return (

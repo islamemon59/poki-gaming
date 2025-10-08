@@ -1,5 +1,5 @@
 import { IoIosArrowBack } from "react-icons/io";
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
 import logo from "../../assets/logo.png"
 
 const SearchSlider = ({ isSlider, toggleSlider }) => {
