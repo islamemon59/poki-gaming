@@ -105,7 +105,6 @@ export default function Login({toggleForm}) {
 
           {/* Divider */}
           <div className="divider text-[#002b50]">OR</div>
-          {/* Register Link */}
           <p className="text-center text-[#002b50]/80 mt-4">
             Don’t have an account?{" "}
             <button
