@@ -19,7 +19,7 @@ const GameCard = ({ game, setHovered, hovered, index }) => {
 
         {/* Game Title with animation */}
         <div
-          className={`absolute text-xs bottom-1 left-0 w-full font-bold bg-opacity-60 text-white text-center transform transition-transform duration-500
+          className={`absolute text-sm bottom-1 left-0 w-full font-bold bg-opacity-60 p-2 text-white text-center transform transition-transform duration-500
           ${hovered === index ? "translate-y-0" : "translate-y-full"}`}
         >
           {game?.title}
