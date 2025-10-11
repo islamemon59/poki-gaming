@@ -16,21 +16,22 @@ const Games = () => {
     },
   });
 
-  if(isLoading) return <Loader/>
+  if (isLoading) return <Loader />;
   return (
 <div
-      className="flex gap-4 p-6"
-    >
-      {games?.map((game, index) => (
-        <GameCard
-          key={index}
-          game={game}
-          index={index}
-          hovered={hovered}
-          setHovered={setHovered}
-        />
-      ))}
-    </div>
+  className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 gap-4 p-6"
+>
+  {games?.map((game, index) => (
+    <GameCard
+      key={index}
+      game={game}
+      index={index}
+      hovered={hovered}
+      setHovered={setHovered}
+    />
+  ))}
+</div>
+
   );
 };
 
