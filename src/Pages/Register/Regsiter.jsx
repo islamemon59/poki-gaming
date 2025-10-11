@@ -5,8 +5,9 @@ import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import GoogleButton from "../../Shared/GoogleLogin/GoogleLogin";
+import { saveUserToDb } from "../../Api/saveUserToDB";
 
-export default function Register({toggleForm}) {
+export default function Register({ toggleForm }) {
   const [showPassword, setShowPassword] = useState(false);
   const [isValue, setIsValue] = useState("");
   const { createUser } = useAuth();
@@ -23,6 +24,7 @@ export default function Register({toggleForm}) {
     try {
       const res = await createUser(email, password);
       if (res.user) {
+        await saveUserToDb({ displayName: name, email: res?.user?.email });
         Swal.fire({
           title: "Registration Successful",
           icon: "success",

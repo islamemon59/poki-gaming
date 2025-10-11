@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { saveUserToDb } from "../../Api/saveUserToDB";
 
 export default function GoogleButton() {
   const { signInWithGoogle } = useAuth();
@@ -13,6 +14,7 @@ export default function GoogleButton() {
       const res = await signInWithGoogle();
 
       if (res.user) {
+        await saveUserToDb(res?.user);
         Swal.fire({
           title: "Successfully Login",
           icon: "success",
