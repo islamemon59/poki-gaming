@@ -1,8 +1,12 @@
 import { IoIosArrowBack } from "react-icons/io";
 import SearchBar from "./SearchBar/SearchBar";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo.png";
+import { useState } from "react";
+import SearchResults from "./SearchResults/SearchResults";
 
 const SearchSlider = ({ isSlider, toggleSlider }) => {
+  const [result, setResult] = useState([]);
+  const [loading, setLoading] = useState(false);
   return (
     <div className="min-h-screen bg-gray-50 font-inter">
       {/* 2a. Backdrop Overlay */}
@@ -42,7 +46,9 @@ const SearchSlider = ({ isSlider, toggleSlider }) => {
 
         {/* Slider Body Content */}
         <div className="p-6">
-          <SearchBar />
+          <SearchBar setResult={setResult} setLoading={setLoading} />
+
+          <SearchResults loading={loading} result={result} />
         </div>
       </div>
     </div>
