@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useParams } from "react-router";
 import Loader from "../../../Shared/Loader/Loader";
+import Navbar from "../../../Shared/Navbar/Navbar";
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -39,7 +40,8 @@ const GameDetails = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center p-4 bg-gray-100 min-h-screen">
+    <div className="flex flex-col items-center p-4 bg-gray-100 min-h-screen lg:pt-0 pt-27">
+      <Navbar/>
       {/* Main Game */}
       <h1 className="text-2xl font-bold mb-4 text-center">{game?.title}</h1>
       <div className="w-full max-w-5xl aspect-video mb-8 rounded-xl overflow-hidden shadow-lg">

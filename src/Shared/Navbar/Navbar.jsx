@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     // Outer container with the light teal-blue background effect
-    <div className="p-4 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl shadow-xl z-50 fixed top-3 left-3">
+    <div className="p-4 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl shadow-xl z-50 fixed top-3 left-6">
       {/* Main NavBar Container */}
       <nav className="flex items-center justify-between h-16 bg-white rounded-lg shadow-inner w-42">
         {/* Left Side: Logo */}
