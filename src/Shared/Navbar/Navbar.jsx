@@ -3,6 +3,7 @@ import { FaUser, FaSearch } from "react-icons/fa"; // Using Font Awesome icons f
 import UserSlider from "../../Components/UserSlider/UserSlider";
 import SearchSlider from "../../Components/SearchSlider/SearchSlider";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router";
 
 const Navbar = () => {
   // The color #009cff is defined as a custom utility for Tailwind below
@@ -23,9 +24,12 @@ const Navbar = () => {
       {/* Main NavBar Container */}
       <nav className="flex items-center justify-between h-16 bg-white rounded-lg shadow-inner w-42">
         {/* Left Side: Logo */}
-        <div className="flex items-center flex-1">
+        <Link
+          to="/"
+          className="flex items-center flex-1 hover:scale-105 transition-transform duration-300"
+        >
           <img src={logo} className="w-28" alt="logo" />
-        </div>
+        </Link>
 
         {/* Right Side: Icons */}
         <div className="flex items-center flex-col gap-6">
