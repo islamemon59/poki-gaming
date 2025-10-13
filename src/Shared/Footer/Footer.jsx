@@ -39,7 +39,7 @@ const Footer = () => {
 
   return (
     // Outer container with the white background and subtle side effects (simulated with large padding)
-    <footer className="bg-white pt-20 pb-12 px-4 sm:px-6 lg:px-12">
+    <footer className="bg-gray-700 pt-20 pb-12 px-4 sm:px-6 lg:px-12">
       <div className=" mx-auto flex flex-col lg:flex-row justify-between">
         {/* === Left Section: Logo, Language Selector, Social Icons === */}
         <div className="mb-10 lg:mb-0">
@@ -117,7 +117,7 @@ const Footer = () => {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-[15px] font-bold transition duration-300 ease-in-out hover:text-[#009cff] text-[#002b50] hover:border-b-2 border-[#002b50] hover:border-[#009cff]"
+                      className="text-[15px] font-bold transition duration-300 ease-in-out hover:text-red-600 text-white hover:border-b-2 border-[#002b50] hover:border-red-600"
                     >
                       {link}
                     </a>

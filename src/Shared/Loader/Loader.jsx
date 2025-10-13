@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Loader() {
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center bg-[#83ffe7] text-white z-[9999]">
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-black text-white z-[9999]">
       {/* Animated circles */}
       <div className="relative w-20 h-20 flex items-center justify-center">
         <motion.div
