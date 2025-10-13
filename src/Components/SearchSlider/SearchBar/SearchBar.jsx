@@ -1,5 +1,4 @@
 import { FaSearch } from "react-icons/fa";
-import logo from "../../../assets/logo2.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -38,7 +37,6 @@ const SearchBar = ({ setResult, setLoading }) => {
   return (
     <div>
       <div className="flex justify-between items-center bg-white px-4 rounded-2xl">
-        <img src={logo} alt="second logo" />
         <input
           type="text"
           placeholder="What are you playing today?"
