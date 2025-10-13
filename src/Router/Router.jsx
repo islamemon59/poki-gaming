@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import GameDetails from "../Components/Games/GameDetails/GameDetails";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Regsiter";
+import UserProfile from "../Components/UserSlider/UserProfile/UserProfile";
+import UpdateProfile from "../Components/UserSlider/UpdateProfile/UpdateProfile";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ export const router = createBrowserRouter([
         path: "/games/:id",
         Component: GameDetails,
       },
+       {
+        path: "/profile",
+        Component: UserProfile,
+      },
+       {
+        path: "/updateProfile",
+        Component: UpdateProfile,
+      },
 
     ],
   },
@@ -29,4 +39,5 @@ export const router = createBrowserRouter([
         path: "/register",
         Component: Register,
       },
+       
 ]);

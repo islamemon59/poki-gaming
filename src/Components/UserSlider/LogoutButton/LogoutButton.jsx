@@ -3,9 +3,11 @@ import toast from "react-hot-toast";
 import { FaSignOutAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router";
 
 const LogoutButton = () => {
   const { signOutUser } = useAuth();
+  const navigate = useNavigate()
   const handleLogout = () => {
     signOutUser()
       .then(() => {
@@ -14,6 +16,7 @@ const LogoutButton = () => {
           icon: "success",
           draggable: true,
         });
+        navigate("/")
       })
       .catch((error) => {
         toast.error(`${error}`);

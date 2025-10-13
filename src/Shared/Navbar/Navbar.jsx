@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import { FaSignInAlt, FaUserPlus, FaSignOutAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import Loader from "../Loader/Loader";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
@@ -21,8 +22,9 @@ const Navbar = () => {
         toast.error(`${error}`);
       });
   };
+
   return (
-    <div className="navbar shadow-sm py-5 md:px-8">
+    <div className="navbar shadow-sm bg-black py-5 md:px-8">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -95,12 +97,25 @@ const Navbar = () => {
       <div className="navbar-end flex items-center gap-4">
         {user ? (
           // ✅ When Logged In
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-3 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
-          >
-            <FaSignOutAlt className="text-lg" />
-          </button>
+          <>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-3 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+            >
+              <FaSignOutAlt className="text-lg" />
+            </button>
+            <Link to="/profile" className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar border-2 hover:scale-105 transition duration-300 border-red-600"
+              >
+                <div className="w-10 rounded-full">
+                  <img alt="user" src={user?.photoURL} />
+                </div>
+              </div>
+            </Link>
+          </>
         ) : (
           // 🚪 When Logged Out
           <div className="flex items-center gap-3">
