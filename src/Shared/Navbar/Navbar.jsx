@@ -1,53 +1,125 @@
-import React, { useState } from "react";
-import { FaUser, FaSearch } from "react-icons/fa"; // Using Font Awesome icons from react-icons
-import UserSlider from "../../Components/UserSlider/UserSlider";
-import SearchSlider from "../../Components/SearchSlider/SearchSlider";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router";
+import useAuth from "../../Hooks/useAuth";
+import { FaSignInAlt, FaUserPlus, FaSignOutAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-  // The color #009cff is defined as a custom utility for Tailwind below
-  const iconColor = "#009cff";
-  const [isOpen, setIsOpen] = useState(false);
-  const [isSlider, setIsSlider] = useState(false);
+  const { user, signOutUser } = useAuth();
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+  const handleLogout = () => {
+    signOutUser()
+      .then(() => {
+        Swal.fire({
+          title: "Logout Successful",
+          icon: "success",
+          draggable: true,
+        });
+      })
+      .catch((error) => {
+        toast.error(`${error}`);
+      });
   };
-  const toggleSlider = () => {
-    setIsSlider(!isSlider);
-  };
-
   return (
-    // Outer container with the light teal-blue background effect
-    <div className="p-4 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl shadow-xl z-50 fixed top-3 left-6">
-      {/* Main NavBar Container */}
-      <nav className="flex items-center justify-between h-16 bg-white rounded-lg shadow-inner w-42">
-        {/* Left Side: Logo */}
-        <Link
-          to="/"
-          className="flex items-center flex-1 hover:scale-105 transition-transform duration-300"
-        >
-          <img src={logo} className="w-28" alt="logo" />
-        </Link>
-
-        {/* Right Side: Icons */}
-        <div className="flex items-center flex-col gap-6">
-          {/* User Icon */}
-          <button onClick={toggleSidebar} className="cursor-pointer">
-            <FaUser className="w-5 h-5" style={{ color: iconColor }} />
-          </button>
-
-          {/* Search Icon */}
-          <button onClick={toggleSlider} className="cursor-pointer">
-            <FaSearch className="w-5 h-5" style={{ color: iconColor }} />
-          </button>
+    <div className="navbar shadow-sm py-5 md:px-8">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {" "}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />{" "}
+            </svg>
+          </div>
+          <ul
+            tabIndex="-1"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a>Item 1</a>
+            </li>
+            <li>
+              <a>Parent</a>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>Item 3</a>
+            </li>
+          </ul>
         </div>
+        <Link to="/" className="btn btn-ghost text-xl">
+          <img src={logo} alt="logo" className="w-24" />
+        </Link>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <a>Item 1</a>
+          </li>
+          <li>
+            <details>
+              <summary>Parent</summary>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <a>Item 3</a>
+          </li>
+        </ul>
+      </div>
+      <div className="navbar-end flex items-center gap-4">
+        {user ? (
+          // ✅ When Logged In
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-3 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+          >
+            <FaSignOutAlt className="text-lg" />
+          </button>
+        ) : (
+          // 🚪 When Logged Out
+          <div className="flex items-center gap-3">
+            <Link
+              to="/login"
+              className="flex items-center gap-2 px-3 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+            >
+              <FaSignInAlt className="text-lg" />
+            </Link>
 
-        {/* Sliders */}
-        <UserSlider isOpen={isOpen} toggleSidebar={toggleSidebar} />
-        <SearchSlider isSlider={isSlider} toggleSlider={toggleSlider} />
-      </nav>
+            <Link
+              to="/register"
+              className="flex items-center gap-2 px-3 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+            >
+              <FaUserPlus className="text-lg" />
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
