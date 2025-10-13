@@ -7,7 +7,7 @@ export default function Loader() {
       {/* Animated circles */}
       <div className="relative w-20 h-20 flex items-center justify-center">
         <motion.div
-          className="absolute w-20 h-20 border-4 border-t-transparent border-[#EDF6F8] rounded-full"
+          className="absolute w-20 h-20 border-4 border-t-transparent border-red-600 rounded-full"
           animate={{ rotate: 360 }}
           transition={{
             repeat: Infinity,
@@ -16,7 +16,7 @@ export default function Loader() {
           }}
         />
         <motion.div
-          className="absolute w-12 h-12 border-4 border-t-transparent border-[#144D75] rounded-full"
+          className="absolute w-12 h-12 border-4 border-t-transparent border-white rounded-full"
           animate={{ rotate: -360 }}
           transition={{
             repeat: Infinity,
@@ -25,7 +25,7 @@ export default function Loader() {
           }}
         />
         <motion.div
-          className="absolute w-4 h-4 bg-[#EDF6F8] rounded-full"
+          className="absolute w-4 h-4 bg-red-600 rounded-full"
           animate={{ scale: [1, 1.3, 1] }}
           transition={{
             repeat: Infinity,
