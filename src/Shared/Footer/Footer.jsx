@@ -4,6 +4,7 @@ import { FaTiktok, FaFacebookF, FaYoutube, FaGlobe } from "react-icons/fa"; // I
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router";
 import Flag from "react-world-flags";
+import logo from "../../assets/logo.png";
 
 const Footer = () => {
   // Define colors based on the image's aesthetic
@@ -13,16 +14,8 @@ const Footer = () => {
   // Link data for the right columns
   const linkColumns = [
     {
-      title: "GET TO KNOW US",
-      links: ["About", "Poki for Developers", "Poki Kids", "Jobs"],
-    },
-    {
-      title: "PRIVACY AND TERMS",
-      links: ["Privacy Center"],
-    },
-    {
-      title: "HELP AND SUPPORT",
-      links: ["FAQ", "Contact"],
+      title: "COMPANY",
+      links: ["About Us", "Privacy Policy", "Contact Us"],
     },
   ];
 
@@ -31,9 +24,9 @@ const Footer = () => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`w-10 h-10 flex items-center bg-[#002b50] hover:bg-[#009cff] justify-center rounded-full transition duration-300 ease-in-out`}
+      className={`w-10 h-10 flex items-center bg-white hover:bg-red-600 justify-center rounded-full transition duration-300 ease-in-out`}
     >
-      <Icon className="text-white w-5 h-5" />
+      <Icon className="text-black w-5 h-5" />
     </Link>
   );
 
@@ -46,46 +39,17 @@ const Footer = () => {
           {/* Logo and Tagline (Reusing the Poki logo structure) */}
           <div className="mb-4 flex items-center gap-6">
             <div className="text-2xl font-bold flex items-center">
-              {/* P */}
-              <span
-                className="text-2xl font-extrabold tracking-tight"
-                style={{ color: darkBlue }}
-              >
-                P
-              </span>
-              {/* O with a blue fill */}
-              <div className="relative h-6 w-6 mx-0.5">
-                <div
-                  className="absolute top-0 left-0 h-full w-full border-2 rounded-full"
-                  style={{ borderColor: darkBlue }}
-                ></div>
-                <div
-                  className="absolute bottom-0 left-0 w-full h-1/2 rounded-b-full"
-                  style={{ backgroundColor: lightBlue }}
-                ></div>
-              </div>
-              {/* K I */}
-              <span
-                className="text-2xl font-extrabold tracking-tight"
-                style={{ color: darkBlue }}
-              >
-                ki
-              </span>
+              <img src={logo} alt="logo" className="w-18" />
             </div>
-            <p className="mt-2 text-lg font-bold" style={{ color: darkBlue }}>
+            <p className="mt-2 text-lg font-bold text-white">
               Let the world play
             </p>
           </div>
 
           {/* Language Selector */}
           <div className="mb-8">
-            <button
-              className="flex items-center space-x-2 py-2 px-4 border-2 rounded-full text-base font-medium transition-all duration-300 ease-in-out hover:bg-gray-50 border-[#009cff] text-[#009cff] hover:text-[#002b50] hover:border-[#002b50]"
-            >
-              <Flag 
-                code="GB"
-                className="shadow-md rounded-full h-6 w-6"
-              />
+            <button className="flex items-center space-x-2 py-2 px-4 border-2 rounded-full text-base font-medium transition-all duration-300 ease-in-out hover:bg-gray-50 border-white text-white hover:text-red-600 hover:border-red-600">
+              <Flag code="GB" className="shadow-md rounded-full h-6 w-6" />
               <span className="font-bold">English</span>
               <IoIosArrowDown className="font-bold" />
             </button>
@@ -94,9 +58,30 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex space-x-4">
             {/* Note: FaFacebookF is used as a stand-in for the "P" icon on the actual Poki site, as the image shows a blue circle icon that isn't clearly Facebook/Twitter, but a placeholder is fine. */}
-            <SocialIcon  Icon={FaTiktok} href="#" />
-            <SocialIcon Icon={FaFacebookF} href="#" />
-            <SocialIcon Icon={FaYoutube} href="#" />
+            <Link
+              to="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-10 h-10 flex items-center bg-white group hover:bg-black justify-center rounded-full transition-all duration-300 ease-in-out`}
+            >
+              <FaTiktok className="text-black group-hover:text-white w-5 h-5" />
+            </Link>
+            <Link
+              to="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-10 h-10 flex items-center bg-white group hover:bg-blue-600 justify-center rounded-full transition-all duration-300 ease-in-out`}
+            >
+              <FaFacebookF className="text-black group-hover:text-white w-5 h-5" />
+            </Link>
+            <Link
+              to="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-10 h-10 flex items-center bg-white hover:bg-red-600 group justify-center rounded-full transition duration-300 ease-in-out`}
+            >
+              <FaYoutube className="text-black group-hover:text-white w-5 h-5" />
+            </Link>
           </div>
         </div>
 
@@ -105,9 +90,7 @@ const Footer = () => {
           {linkColumns.map((column) => (
             <div key={column.title}>
               {/* Column Title */}
-              <h4
-                className="text-[11px] font-bold uppercase tracking-wider mb-4 text-gray-400"
-              >
+              <h4 className="text-[11px] font-bold uppercase tracking-wider mb-4 text-gray-400">
                 {column.title}
               </h4>
 
