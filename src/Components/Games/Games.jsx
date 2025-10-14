@@ -1,8 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React, { useState } from "react";
 import GameCard from "./GameCard/GameCard";
-import Loader from "../../Shared/Loader/Loader";
 import useAuth from "../../Hooks/useAuth";
 
 const Games = () => {
