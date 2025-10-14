@@ -15,21 +15,12 @@ const Footer = () => {
   const linkColumns = [
     {
       title: "COMPANY",
-      links: ["About Us", "Privacy Policy", "Contact Us"],
-      to:["/aboutUs", "/privacyPolicy", "/contactUs"]
+      links: ["About Us", "Terms and Conditions", "Contact Us"],
+      to:["/aboutUs", "/termsCondition", "/contactUs"]
     },
   ];
 
-  const SocialIcon = ({ Icon, href }) => (
-    <Link
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`w-10 h-10 flex items-center bg-white hover:bg-red-600 justify-center rounded-full transition duration-300 ease-in-out`}
-    >
-      <Icon className="text-black w-5 h-5" />
-    </Link>
-  );
+
 
   return (
     // Outer container with the white background and subtle side effects (simulated with large padding)

@@ -10,13 +10,13 @@ const AboutUs = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,0,0,0.15),transparent_50%)]"></div>
 
       {/* Header / Navbar */}
-      <header className="flex items-center justify-between px-6 py-4 relative z-10">
+      <header className="flex items-center justify-between px-6 py-4 relative z-10 border-b border-white/10">
         <Link
           to="/"
           className="flex items-center gap-2 hover:opacity-80 transition-all"
         >
           <img
-            src={logo}// 🔁 replace with your actual logo path
+            src={logo} // 🔁 replace with your logo path
             alt="Logo"
             className="w-10 h-10 object-cover rounded-full border-2 border-red-600"
           />
@@ -27,10 +27,9 @@ const AboutUs = () => {
 
         <Link
           to="/"
-          className="flex items-center gap-2 px-5 py-2 bg-red-600 hover:bg-red-700 rounded-full text-white font-semibold transition-all"
+          className="px-5 py-2 bg-red-600 hover:bg-red-700 rounded-full text-white font-semibold transition-all"
         >
-          <FaArrowLeft />
-          Back to Games
+          Go Home
         </Link>
       </header>
 
@@ -73,7 +72,7 @@ const AboutUs = () => {
 
           <div className="flex justify-center mt-12">
             <Link
-              to="/games"
+              to="/"
               className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-lg rounded-full shadow-lg transition-all"
             >
               Explore Our Games

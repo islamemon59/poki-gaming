@@ -7,6 +7,7 @@ import Register from "../Pages/Register/Regsiter";
 import UserProfile from "../Components/UserSlider/UserProfile/UserProfile";
 import UpdateProfile from "../Components/UserSlider/UpdateProfile/UpdateProfile";
 import AboutUs from "../Shared/Footer/AboutUs/AboutUs";
+import TermsAndConditions from "../Shared/Footer/TermsAndConditions/TermsAndConditions";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
         {
         path: "/aboutUs",
         Component: AboutUs,
+      },
+        {
+        path: "/termsCondition",
+        Component: TermsAndConditions,
       },
        
 ]);
