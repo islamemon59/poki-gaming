@@ -16,6 +16,7 @@ const Footer = () => {
     {
       title: "COMPANY",
       links: ["About Us", "Privacy Policy", "Contact Us"],
+      to:["/aboutUs", "/privacyPolicy", "/contactUs"]
     },
   ];
 
@@ -96,14 +97,15 @@ const Footer = () => {
 
               {/* Links */}
               <ul className="space-y-3">
-                {column.links.map((link) => (
+                {column.links.map((link, index) => (
                   <li key={link}>
-                    <a
+                    <Link
+                    to={column.to[index]}
                       href="#"
                       className="text-[15px] font-bold transition duration-300 ease-in-out hover:text-red-600 text-white hover:border-b-2 border-[#002b50] hover:border-red-600"
                     >
                       {link}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

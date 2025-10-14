@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Regsiter";
 import UserProfile from "../Components/UserSlider/UserProfile/UserProfile";
 import UpdateProfile from "../Components/UserSlider/UpdateProfile/UpdateProfile";
+import AboutUs from "../Shared/Footer/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
         {
         path: "/register",
         Component: Register,
+      },
+        {
+        path: "/aboutUs",
+        Component: AboutUs,
       },
        
 ]);
