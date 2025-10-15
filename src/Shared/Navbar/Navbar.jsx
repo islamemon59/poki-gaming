@@ -1,5 +1,4 @@
 import { useState } from "react";
-import logo from "../../assets/logo.png";
 import { Link } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import {
@@ -40,8 +39,11 @@ const Navbar = () => {
       <div className="flex items-center justify-around gap-4">
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Link to="/">
-            <img src={logo} alt="logo" className="w-24" />
+          <Link
+            to="/"
+            className="text-2xl font-bold text-red-600 hover:text-white transition duration-300"
+          >
+            innliv<span className="text-white">.com</span>
           </Link>
         </div>
 

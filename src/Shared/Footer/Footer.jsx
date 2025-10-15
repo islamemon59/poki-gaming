@@ -15,12 +15,15 @@ const Footer = () => {
   const linkColumns = [
     {
       title: "COMPANY",
-      links: ["About Us", "Terms and Conditions", "Contact Us"],
-      to:["/aboutUs", "/termsCondition", "/contactUs"]
+      links: [
+        "About Us",
+        "Terms and Conditions",
+        "Contact Us",
+        "Privacy Policy",
+      ],
+      to: ["/aboutUs", "/termsCondition", "/contactUs", "/privacyPolicy"],
     },
   ];
-
-
 
   return (
     // Outer container with the white background and subtle side effects (simulated with large padding)
@@ -31,7 +34,12 @@ const Footer = () => {
           {/* Logo and Tagline (Reusing the Poki logo structure) */}
           <div className="mb-4 flex items-center gap-6">
             <div className="text-2xl font-bold flex items-center">
-              <img src={logo} alt="logo" className="w-18" />
+              <Link
+                to="/"
+                className="text-2xl font-bold text-red-600 hover:text-white transition duration-300"
+              >
+                innliv<span className="text-white">.com</span>
+              </Link>
             </div>
             <p className="mt-2 text-lg font-bold text-white">
               Let the world play
@@ -91,7 +99,7 @@ const Footer = () => {
                 {column.links.map((link, index) => (
                   <li key={link}>
                     <Link
-                    to={column.to[index]}
+                      to={column.to[index]}
                       href="#"
                       className="text-[15px] font-bold transition duration-300 ease-in-out hover:text-red-600 text-white hover:border-b-2 border-[#002b50] hover:border-red-600"
                     >

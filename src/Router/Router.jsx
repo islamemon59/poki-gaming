@@ -8,6 +8,8 @@ import UserProfile from "../Components/UserSlider/UserProfile/UserProfile";
 import UpdateProfile from "../Components/UserSlider/UpdateProfile/UpdateProfile";
 import AboutUs from "../Shared/Footer/AboutUs/AboutUs";
 import TermsAndConditions from "../Shared/Footer/TermsAndConditions/TermsAndConditions";
+import PrivacyPolicy from "../Shared/Footer/PrivacyPolicy/PrivacyPolicy";
+import ContactUs from "../Shared/Footer/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ export const router = createBrowserRouter([
         {
         path: "/termsCondition",
         Component: TermsAndConditions,
+      },
+        {
+        path: "/privacyPolicy",
+        Component: PrivacyPolicy,
+      },
+        {
+        path: "/contactUs",
+        Component: ContactUs,
       },
        
 ]);
