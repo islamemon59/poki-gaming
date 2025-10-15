@@ -5,23 +5,29 @@ import useAuth from "../../../Hooks/useAuth";
 
 const SearchBar = () => {
   const [title, setTitle] = useState("");
-  const {setResult} = useAuth()
+  const { setResult, setIsLoading } = useAuth();
 
+  useEffect(() => {
+    // debounce logic
+    const delay = setTimeout(async () => {
+      try {
+        setIsLoading(true);
 
+        const { data } = await axios.get(
+          `http://localhost:5000/search/games${title ? `?title=${title}` : ""}`
+        );
 
+        setResult(data);
+      } catch (error) {
+        console.error("Search failed:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }, 500); // 500ms debounce delay
 
-
-useEffect(() => {
-const fetchGames = async () => {
-  const { data } = await axios.get(
-    `http://localhost:5000/search/games${title ? `?title=${title}` : ""}`
-  );
-  setResult(data)
-};
-fetchGames()
-},[setResult, title])
-
-
+    // cleanup when typing continues
+    return () => clearTimeout(delay);
+  }, [title, setResult, setIsLoading]);
 
   return (
     <div>

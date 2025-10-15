@@ -6,7 +6,9 @@ const Home = () => {
     return (
         <div>
 
-                <Games/>
+                <div className='min-h-[calc(100vh-100px)]'>
+                    <Games/>
+                </div>
                 <CategoryList/>
         </div>
     );
