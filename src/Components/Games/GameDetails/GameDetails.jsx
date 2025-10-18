@@ -50,6 +50,10 @@ const GameDetails = () => {
   const rightAd = ads?.find((ad) => ad.position === "right");
   const bottomAds = ads?.filter((ad) => ad.position === "bottom");
 
+  console.log("right add",rightAd?.link);
+  console.log("bottom add",bottomAds?.link);
+  console.log("left add",leftAd?.link);
+
   return (
     <div className="flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0 pt-27">
       {/* Main Content + Ads */}
@@ -57,13 +61,13 @@ const GameDetails = () => {
         {/* Left Ad */}
         {leftAd && (
           <div className="hidden lg:block w-48 sticky top-20 h-auto">
-            <a href={leftAd.link} target="_blank" rel="noopener noreferrer">
+            <Link to={leftAd?.link} target="_blank" rel="noopener noreferrer">
               <img
-                src={leftAd.image}
-                alt={leftAd.title}
+                src={leftAd?.image}
+                alt={leftAd?.title}
                 className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
               />
-            </a>
+            </Link>
           </div>
         )}
 
@@ -87,8 +91,8 @@ const GameDetails = () => {
                 </p>
                 {game?.thumbnail && (
                   <img
-                    src={game.thumbnail}
-                    alt={game.title}
+                    src={game?.thumbnail}
+                    alt={game?.title}
                     className="w-40 h-40 object-cover rounded-lg mt-4 shadow"
                   />
                 )}
@@ -99,20 +103,20 @@ const GameDetails = () => {
           {/* Bottom Ads */}
           {bottomAds?.length > 0 && (
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-              {bottomAds.map((ad) => (
-                <a
-                  key={ad._id}
-                  href={ad.link}
+              {bottomAds?.map((ad) => (
+                <Link
+                  key={ad?._id}
+                  to={ad?.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-64 h-32 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
                 >
                   <img
-                    src={ad.image}
-                    alt={ad.title}
+                    src={ad?.image}
+                    alt={ad?.title}
                     className="w-full h-full object-cover"
                   />
-                </a>
+                </Link>
               ))}
             </div>
           )}
@@ -149,13 +153,13 @@ const GameDetails = () => {
         {/* Right Ad */}
         {rightAd && (
           <div className="hidden lg:block w-48 sticky top-20 h-auto">
-            <a href={rightAd.link} target="_blank" rel="noopener noreferrer">
+            <Link to={rightAd?.link} target="_blank" rel="noopener noreferrer">
               <img
-                src={rightAd.image}
-                alt={rightAd.title}
+                src={rightAd?.image}
+                alt={rightAd?.title}
                 className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
               />
-            </a>
+            </Link>
           </div>
         )}
       </div>
