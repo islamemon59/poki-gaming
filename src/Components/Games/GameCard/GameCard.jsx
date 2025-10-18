@@ -3,7 +3,7 @@ import { Link } from "react-router";
 const GameCard = ({ game, setHovered, hovered, index, featured }) => {
   return (
     <div
-      className={`relative group rounded-xl overflow-hidden shadow-lg block hover:scale-105 transition-transform duration-300 ${
+      className={`relative group rounded-xl overflow-hidden shadow-lg block hover:scale-105 transition-transform duration-600 ${
         featured ? "h-80 sm:h-96 lg:h-[450px]" : "aspect-square"
       }`}
       onMouseEnter={() => setHovered(index)}

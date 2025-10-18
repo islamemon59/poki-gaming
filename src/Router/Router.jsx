@@ -10,6 +10,7 @@ import AboutUs from "../Shared/Footer/AboutUs/AboutUs";
 import TermsAndConditions from "../Shared/Footer/TermsAndConditions/TermsAndConditions";
 import PrivacyPolicy from "../Shared/Footer/PrivacyPolicy/PrivacyPolicy";
 import ContactUs from "../Shared/Footer/ContactUs/ContactUs";
+import CategoryGames from "../Components/Games/CategoryGames/CategoryGames";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
        {
         path: "/updateProfile",
         Component: UpdateProfile,
+      },
+       {
+        path: "/category/:category",
+        Component: CategoryGames,
       },
 
     ],
