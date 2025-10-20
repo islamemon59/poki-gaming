@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import {
   FaSignInAlt,
@@ -16,6 +16,7 @@ import SearchBar from "../../Components/SearchSlider/SearchBar/SearchBar";
 const Navbar = () => {
   const { user, signOutUser, loading } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation(); // ✅ to detect current route
 
   const handleLogout = () => {
     signOutUser()
@@ -47,12 +48,17 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop Search Bar */}
-        <div className="hidden md:flex flex-1 justify-center">
-          <div className="w-full max-w-3xl lg:max-w-6xl xl:max-w-2xl">
-            <SearchBar className="w-full h-14 lg:h-16 xl:h-20 bg-[#111] border border-red-700/40 rounded-full shadow-inner px-6 text-lg lg:text-xl focus:ring-2 focus:ring-red-500 transition-all duration-300" />
+        {/* ✅ Conditional Search Bar */}
+        {location.pathname === "/" ? (
+          <div className="hidden md:flex flex-1 justify-center">
+            <div className="w-full max-w-3xl lg:max-w-6xl xl:max-w-2xl">
+              <SearchBar className="w-full h-14 lg:h-16 xl:h-20 bg-[#111] border border-red-700/40 rounded-full shadow-inner px-6 text-lg lg:text-xl focus:ring-2 focus:ring-red-500 transition-all duration-300" />
+            </div>
           </div>
-        </div>
+        ) : (
+          // Blank div to maintain layout spacing
+          <div className="hidden md:flex flex-1 justify-center max-w-3xl lg:max-w-6xl xl:max-w-2xl"></div>
+        )}
 
         {/* User Buttons + Mobile Menu Button */}
         <div className="flex items-center gap-3 md:gap-4">
