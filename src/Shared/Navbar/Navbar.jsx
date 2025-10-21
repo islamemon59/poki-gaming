@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import useAuth from "../../Hooks/useAuth";
+import logo from "../../assets/logo.png"
 import {
   FaSignInAlt,
   FaUserPlus,
@@ -44,7 +45,7 @@ const Navbar = () => {
             to="/"
             className="text-2xl md:text-3xl font-extrabold tracking-wide bg-clip-text text-red-600 hover:text-white transition-all duration-400"
           >
-            innliv<span className="text-white">.com</span>
+            <img className="w-34" src={logo} alt="Logo" />
           </Link>
         </div>
 

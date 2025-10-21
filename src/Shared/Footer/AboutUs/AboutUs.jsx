@@ -1,37 +1,22 @@
 import React from "react";
-import logo from "../../../assets/logo.png"
 import { Link } from "react-router";
-import { FaArrowLeft } from "react-icons/fa";
+import logo from "../../../assets/logo.png"
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] text-white relative overflow-hidden">
+    <div className="min-h-screen px-6 py-10 bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] text-white relative overflow-hidden">
       {/* Floating background accent */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,0,0,0.15),transparent_50%)]"></div>
 
-      {/* Header / Navbar */}
-      <header className="flex items-center justify-between px-6 py-4 relative z-10 border-b border-white/10">
+      {/* Header + Logo */}
+      <div className="max-w-6xl mx-auto mb-10 flex justify-between items-center">
         <Link
           to="/"
-          className="flex items-center gap-2 hover:opacity-80 transition-all"
+          className="text-2xl font-bold text-red-600 hover:text-white transition duration-300"
         >
-          <img
-            src={logo} // 🔁 replace with your logo path
-            alt="Logo"
-            className="w-10 h-10 object-cover rounded-full border-2 border-red-600"
-          />
-          <span className="font-extrabold text-xl text-red-500 tracking-wider">
-            innliv.com
-          </span>
+          <img className="w-34" src={logo} alt="Logo" />
         </Link>
-
-        <Link
-          to="/"
-          className="px-5 py-2 bg-red-600 hover:bg-red-700 rounded-full text-white font-semibold transition-all"
-        >
-          Go Home
-        </Link>
-      </header>
+      </div>
 
       {/* Main Content */}
       <main className="relative z-10 px-6 lg:px-20 py-10 lg:py-20 max-w-6xl mx-auto">

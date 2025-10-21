@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
+import logo from "../../../assets/logo.png"
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ const ContactUs = () => {
           to="/"
           className="text-2xl font-bold text-red-600 hover:text-white transition duration-300"
         >
-          innliv<span className="text-white">.com</span>
+          <img className="w-34" src={logo} alt="Logo" />
         </Link>
       </div>
 
