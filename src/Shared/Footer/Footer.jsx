@@ -89,7 +89,7 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {column.links.map((link, index) => (
-                  <li key={link}>
+                  <li onClick={() => scrollTo(0, 0)} key={link}>
                     <Link
                       to={column.to[index]}
                       className="text-[15px] font-bold transition duration-300 ease-in-out hover:text-red-600 text-white hover:border-b-2 border-[#002b50] hover:border-red-600"
