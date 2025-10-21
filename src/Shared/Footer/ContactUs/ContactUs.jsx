@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 import logo from "../../../assets/logo.png"
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 const ContactUs = () => {
+  useDynamicTitle("Contact Us");
   const [formData, setFormData] = useState({
     name: "",
     email: "",

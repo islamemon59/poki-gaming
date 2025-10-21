@@ -6,8 +6,10 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import GoogleButton from "../../Shared/GoogleLogin/GoogleLogin";
 import { saveUserToDb } from "../../Api/saveUserToDB";
+import useDynamicTitle from "../../Hooks/useDynamicTitle";
 
 export default function Register() {
+  useDynamicTitle("Register");
   const [showPassword, setShowPassword] = useState(false);
   const [isValue, setIsValue] = useState("");
   const { createUser } = useAuth();

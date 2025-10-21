@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router";
 import logo from "../../../assets/logo.png"
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 const TermsAndConditions = () => {
+  useDynamicTitle("Terms & Conditions");
   return (
     <div className="min-h-screen px-6 py-10 bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] text-white relative overflow-hidden">
       {/* Background Accent */}

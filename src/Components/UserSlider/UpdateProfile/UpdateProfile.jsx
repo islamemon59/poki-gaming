@@ -4,8 +4,10 @@ import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import Loader from "../../../Shared/Loader/Loader";
 import { useState } from "react";
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 export default function UpdateProfile() {
+  useDynamicTitle("Update Profile");
   const { updateUserProfile, user, loading } = useAuth();
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)

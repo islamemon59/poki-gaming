@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router";
 import logo from "../../../assets/logo.png"
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 const PrivacyPolicy = () => {
+  useDynamicTitle("Privacy Policy");
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-black via-[#111] to-[#1a1a1a] text-white px-6 py-10"

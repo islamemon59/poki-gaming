@@ -2,8 +2,10 @@ import { FaUserEdit, FaEnvelope } from "react-icons/fa";
 import useAuth from "../../../Hooks/useAuth";
 import LogoutButton from "../LogoutButton/LogoutButton";
 import { Link } from "react-router";
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 export default function UserProfile() {
+  useDynamicTitle("Profile");
   const { user } = useAuth();
   const adminData = {
     name: `${user?.displayName}`,

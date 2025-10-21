@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useParams } from "react-router";
 import Loader from "../../../Shared/Loader/Loader";
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -35,25 +36,24 @@ const GameDetails = () => {
     },
   });
 
+  useDynamicTitle(`${game?.title || 'title'}`);
+  
   const otherGames = games?.filter((g) => g?._id !== id);
 
   if (isLoading) return <Loader />;
 
   if (!game)
     return <h2 className="text-center text-red-500">Game not found!</h2>;
-
+  
   const isValidUrl = (url) =>
     url && (url.startsWith("http://") || url.startsWith("https://"));
-
+  
   // Separate ads by position
   const leftAd = ads?.find((ad) => ad.position === "left");
   const rightAd = ads?.find((ad) => ad.position === "right");
   const bottomAds = ads?.filter((ad) => ad.position === "bottom");
 
-  console.log("right add",rightAd?.link);
-  console.log("bottom add",bottomAds?.link);
-  console.log("left add",leftAd?.link);
-
+  
   return (
 <div className="flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
   {/* Main Content + Ads */}
