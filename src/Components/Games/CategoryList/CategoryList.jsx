@@ -47,7 +47,7 @@ const CategoryList = () => {
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-8">
       {categories.map((cat) => (
         <div
-        onClick={() => navigate(`/category/${cat}`)}
+        onClick={() => {navigate(`/category/${cat}`), scrollTo(0, 0)}}
           key={cat}
           className="flex flex-col items-center justify-center bg-white p-6 rounded-xl shadow-md transform transition-transform duration-300 hover:scale-105 cursor-pointer"
         >

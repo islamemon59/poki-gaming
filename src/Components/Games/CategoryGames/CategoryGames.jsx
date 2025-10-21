@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router";
 import Loader from "../../../Shared/Loader/Loader";
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 const CategoryGames = () => {
   const { category } = useParams();
+  useDynamicTitle(category);
   const navigate = useNavigate();
 
   // Fetch games by category
