@@ -1,3 +1,4 @@
+import AboutInnLiv from '../../Components/AboutInnliv/AboutInnliv';
 import CategoryList from '../../Components/Games/CategoryList/CategoryList';
 import GameCategories from '../../Components/Games/CategoryList/CategoryList';
 import Games from '../../Components/Games/Games';
@@ -12,6 +13,7 @@ const Home = () => {
                     <Games/>
                 </div>
                 <CategoryList/>
+                <AboutInnLiv/>
         </div>
     );
 };
