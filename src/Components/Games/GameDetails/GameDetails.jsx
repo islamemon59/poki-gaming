@@ -166,6 +166,45 @@ const GameDetails = () => {
           <div className="mt-8">
             <CategoryList />
           </div>
+
+          {/* === GAME DESCRIPTION SECTION === */}
+          <div className="mt-10 bg-gray-900 rounded-xl p-6 shadow-lg border border-red-700/30 text-white max-w-5xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-6">
+              {/* Thumbnail */}
+              {game?.thumbnail && (
+                <img
+                  src={game.thumbnail}
+                  alt={game.title}
+                  className="w-full md:w-64 h-40 md:h-48 object-cover rounded-lg shadow-md flex-shrink-0"
+                />
+              )}
+
+              {/* Game Info */}
+              <div className="flex-1 flex flex-col justify-between">
+                {/* Title */}
+                <h3 className="text-2xl font-bold mb-2">{game?.title}</h3>
+
+                {/* Category */}
+                {game?.category && (
+                  <p className="text-sm font-semibold text-red-500 mb-4">
+                    Category:{" "}
+                    <span className="text-white">{game.category}</span>
+                  </p>
+                )}
+
+                {/* Description */}
+                {game?.description ? (
+                  <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                    {game.description}
+                  </p>
+                ) : (
+                  <p className="text-gray-500 text-sm italic">
+                    No description available.
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Right Ad (hidden on small) */}
