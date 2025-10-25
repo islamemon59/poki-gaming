@@ -141,6 +141,7 @@ const GameDetails = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             {otherGames?.map((g) => (
               <Link
+              onClick={() => scrollTo(0, 0)}
                 key={g?._id}
                 to={`/games/${g?._id}`}
                 className="rounded-xl overflow-hidden shadow-md relative group aspect-square"
