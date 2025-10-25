@@ -137,7 +137,7 @@ const Footer = () => {
 
       {/* === BOTTOM COPYRIGHT === */}
       <div className="border-t border-gray-600 mt-10 pt-6 text-center text-gray-400 text-xs sm:text-sm">
-        © {new Date().getFullYear()} GameWorld. All rights reserved.
+        © {new Date().getFullYear()} innliv.com — All Rights Reserved
       </div>
     </footer>
   );

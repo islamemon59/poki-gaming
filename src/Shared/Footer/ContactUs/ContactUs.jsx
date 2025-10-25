@@ -115,11 +115,6 @@ const ContactUs = () => {
           </button>
         </form>
       </div>
-
-      {/* Footer */}
-      <footer className="mt-10 text-gray-500 text-sm text-center">
-        © {new Date().getFullYear()} innliv.com — All Rights Reserved
-      </footer>
     </div>
   );
 };
