@@ -1,13 +1,6 @@
-import {
-  FaTiktok,
-  FaFacebookF,
-  FaYoutube,
-  FaGlobe,
-  FaInstagram,
-} from "react-icons/fa"; // Icons for social media and language
-import { IoIosArrowDown } from "react-icons/io";
+/* eslint-disable no-unused-vars */
+import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa"; // Icons for social media and language
 import { Link } from "react-router";
-import Flag from "react-world-flags";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -50,49 +43,34 @@ const Footer = () => {
   ];
 
   return (
-    // Outer container with the white background and subtle side effects (simulated with large padding)
-    <footer className="bg-gray-700 pt-20 pb-12 px-4 sm:px-6 lg:px-12">
-      <div className="mx-auto flex flex-col lg:flex-row justify-between">
-        {/* === Left Section: Logo, Language Selector === */}
-        <div className="mb-10 lg:mb-0">
-          {/* Logo and Tagline */}
-          <div className="mb-4 flex items-center gap-6">
-            <div className="text-2xl font-bold flex items-center">
-              <Link
-                to="/"
-                className="text-2xl font-bold text-red-600 hover:text-white transition duration-300"
-              >
-                <img className="w-34" src={logo} alt="Logo" />
-              </Link>
-            </div>
-            <p className="mt-2 text-lg font-bold text-white">
-              Let the world play
-            </p>
-          </div>
-
-          {/* Language Selector */}
-          <div className="mb-8">
-            <button className="flex items-center space-x-2 py-2 px-4 border-2 rounded-full text-base font-medium transition-all duration-300 ease-in-out hover:bg-gray-50 border-white text-white hover:text-red-600 hover:border-red-600">
-              <Flag code="GB" className="shadow-md rounded-full h-6 w-6" />
-              <span className="font-bold">English</span>
-              <IoIosArrowDown className="font-bold" />
-            </button>
-          </div>
+    <footer className="bg-gray-700 pt-14 pb-10 px-4 sm:px-8  lg:px-16">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
+        {/* === LEFT: Logo + Tagline === */}
+        <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+          <Link
+            to="/"
+            className="text-2xl font-bold text-red-600 hover:text-white transition duration-300"
+          >
+            <img className="w-28 sm:w-36 md:w-40" src={logo} alt="Logo" />
+          </Link>
+          <p className="mt-3 text-base sm:text-lg font-semibold text-white">
+            Let the world play
+          </p>
         </div>
 
-        {/* === Right Section: Link Columns + Subscribe === */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:gap-24 lg:pr-24 relative">
+        {/* === MIDDLE: Link Columns === */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 justify-center sm:justify-start text-center sm:text-left">
           {linkColumns.map((column) => (
             <div key={column.title}>
-              <h4 className="text-[11px] font-bold uppercase tracking-wider mb-4 text-gray-400">
+              <h4 className="text-[11px] font-bold uppercase tracking-wider mb-3 sm:mb-4 text-gray-400">
                 {column.title}
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {column.links.map((link, index) => (
                   <li onClick={() => scrollTo(0, 0)} key={link}>
                     <Link
                       to={column.to[index]}
-                      className="text-[15px] font-bold transition duration-300 ease-in-out hover:text-red-600 text-white hover:border-b-2 border-[#002b50] hover:border-red-600"
+                      className="text-[14px] sm:text-[15px] font-bold text-white hover:text-red-600 hover:border-b-2 border-transparent transition-all duration-300"
                     >
                       {link}
                     </Link>
@@ -101,63 +79,65 @@ const Footer = () => {
               </ul>
             </div>
           ))}
+        </div>
 
-          {/* === Subscribe Section (Right Side) === */}
-          <div className="col-span-2 md:col-span-1 mt-10 lg:mt-0">
-            <h4 className="text-[11px] font-bold uppercase tracking-wider mb-4 text-gray-400">
+        {/* === RIGHT: Subscribe + Socials === */}
+        <div className="flex flex-col items-center place-content-center sm:items-center text-center sm:text-right">
+          <h4 className="text-[11px] font-bold uppercase tracking-wider mb-4 text-gray-400">
+            Subscribe
+          </h4>
+
+          {/* Input Box */}
+          <div className="flex items-center bg-white rounded-full overflow-hidden shadow-lg w-full">
+            <input
+              type="email"
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="flex-grow px-4 py-2 text-gray-800 text-sm sm:text-base outline-none"
+            />
+            <button
+              onClick={handleSubscribe}
+              className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 sm:px-4 py-2 rounded-r-full transition-all duration-300"
+            >
               Subscribe
-            </h4>
-            <div className="flex items-center bg-white rounded-full overflow-hidden shadow-lg max-w-xs">
-              <input
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-grow px-4 py-2 text-gray-800 outline-none"
-              />
-              <button
-                onClick={handleSubscribe}
-                className="bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2 rounded-r-full transition-all duration-300"
-              >
-                Subscribe
-              </button>
-            </div>
+            </button>
+          </div>
 
-            {/* Social Media Icons OR Subscribe Success */}
-            {!subscribed ? (
-              <div className="flex space-x-4 mt-6">
-                <Link
-                  to="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center bg-white group hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 justify-center rounded-full transition-all duration-300 ease-in-out"
-                >
-                  <FaInstagram className="text-black group-hover:text-white w-5 h-5" />
-                </Link>
-                <Link
-                  to="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center bg-white group hover:bg-blue-600 justify-center rounded-full transition-all duration-300 ease-in-out"
-                >
-                  <FaFacebookF className="text-black group-hover:text-white w-5 h-5" />
-                </Link>
-                <Link
-                  to="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center bg-white hover:bg-red-600 group justify-center rounded-full transition duration-300 ease-in-out"
-                >
-                  <FaYoutube className="text-black group-hover:text-white w-5 h-5" />
-                </Link>
-              </div>
-            ) : (
-              <div className="text-green-400 font-semibold text-sm mt-4 animate-fadeIn">
-                ✅ You are subscribed!
-              </div>
-            )}
+          {/* Social Media or Success Message */}
+
+          <div className="flex justify-center sm:justify-end space-x-3 sm:space-x-4 mt-6">
+            <Link
+              to="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white rounded-full group hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300"
+            >
+              <FaInstagram className="text-black group-hover:text-white w-4 h-4 sm:w-5 sm:h-5" />
+            </Link>
+            <Link
+              to="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white rounded-full group hover:bg-blue-600 transition-all duration-300"
+            >
+              <FaFacebookF className="text-black group-hover:text-white w-4 h-4 sm:w-5 sm:h-5" />
+            </Link>
+            <Link
+              to="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white rounded-full group hover:bg-red-600 transition-all duration-300"
+            >
+              <FaYoutube className="text-black group-hover:text-white w-4 h-4 sm:w-5 sm:h-5" />
+            </Link>
           </div>
         </div>
+      </div>
+
+      {/* === BOTTOM COPYRIGHT === */}
+      <div className="border-t border-gray-600 mt-10 pt-6 text-center text-gray-400 text-xs sm:text-sm">
+        © {new Date().getFullYear()} GameWorld. All rights reserved.
       </div>
     </footer>
   );

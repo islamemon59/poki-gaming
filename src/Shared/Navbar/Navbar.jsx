@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-[9999] bg-gradient-to-r from-black via-[#0d0d0d] to-black backdrop-blur-md shadow-lg px-6 py-4 md:py-5 transition-all duration-500">
       {/* Top section: logo + desktop search + buttons */}
-      <div className="flex items-center justify-between md:justify-around max-w-7xl mx-auto">
+      <div className="flex items-center justify-between md:justify-around gap-2 max-w-7xl mx-auto">
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link
