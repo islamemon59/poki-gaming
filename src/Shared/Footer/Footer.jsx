@@ -1,15 +1,14 @@
-/* eslint-disable no-unused-vars */
 import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa"; // Icons for social media and language
 import { Link } from "react-router";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Footer = () => {
-  const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState("");
 
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
     if (!email.trim()) {
       Swal.fire({
         title: "Please enter your email!",
@@ -19,14 +18,47 @@ const Footer = () => {
       return;
     }
 
-    setSubscribed(true);
-    Swal.fire({
-      title: "Thank you for subscribing!",
-      text: "You’ll now receive updates and news from us 🎮",
-      icon: "success",
-      confirmButtonColor: "#ef4444",
-    });
-    setEmail("");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Swal.fire({
+        title: "Invalid Email Address",
+        text: "Please enter a valid email format (example@mail.com)",
+        icon: "error",
+        confirmButtonColor: "#ef4444",
+      });
+      return;
+    }
+
+    try {
+      // 🚀 2. API request
+      const { data } = await axios.post("http://localhost:5000/subscribe", {
+        email,
+      });
+
+      // ✅ 3. Success alert
+      Swal.fire({
+        title: "Thank You for Subscribing! 🎉",
+        text: data?.message || "You’ll now receive updates and news from us 🎮",
+        icon: "success",
+        confirmButtonColor: "#ef4444",
+      });
+
+      console.log("Subscription Response:", data);
+      setEmail("");
+    } catch (error) {
+      // ❌ 4. Handle API or network errors
+      const errorMsg =
+        error?.response?.data?.message ||
+        "Something went wrong. Please try again later.";
+
+      Swal.fire({
+        title: "Subscription Failed",
+        text: errorMsg,
+        icon: "error",
+        confirmButtonColor: "#ef4444",
+      });
+      console.error("Subscribe Error:", error);
+    }
   };
 
   const linkColumns = [
