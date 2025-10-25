@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router";
 import Loader from "../../../Shared/Loader/Loader";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
+import logo from "../../../assets/logo.png"
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -55,9 +56,9 @@ const GameDetails = () => {
 
   
   return (
-<div className="flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
+<div className="relative flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
   {/* Main Content + Ads */}
-  <div className="flex flex-col lg:flex-row w-full max-w-7xl gap-6">
+  <div className="flex flex-col lg:flex-row w-full  gap-6">
     {/* Left Ad (hidden on small) */}
     {leftAd && (
       <div className="hidden lg:block w-48 sticky top-20 self-start">
@@ -71,9 +72,19 @@ const GameDetails = () => {
       </div>
     )}
 
+          {/* Header + Logo */}
+          <div className="fixed z-50 lg:left-8 left-2 top-2">
+            <Link
+              to="/"
+              className="text-2xl font-bold text-red-600 hover:text-white transition duration-300"
+            >
+              <img className="lg:w-30 w-20" src={logo} alt="Logo" />
+            </Link>
+          </div>
+
     {/* Main Game */}
     <div className="flex-1">
-      <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center text-white">
+      <h1 className="text-2xl md:text-3xl font-bold my-4 text-center text-white">
         {game?.title}
       </h1>
 
@@ -139,7 +150,7 @@ const GameDetails = () => {
             <img
               src={g?.thumbnail}
               alt={g?.title}
-              className="w-full h-28 sm:h-32 md:h-36 lg:h-40 object-cover aspect-square"
+              className="w-full h-full object-cover aspect-square"
             />
             <div
               className={`absolute text-xs sm:text-sm bottom-0 left-0 w-full font-bold bg-black/60 p-1.5 sm:p-2 text-white text-center transform transition-transform duration-500 ${
