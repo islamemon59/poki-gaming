@@ -6,9 +6,11 @@ import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 const TermsAndConditions = () => {
   useDynamicTitle("Terms & Conditions");
   return (
-    <div className="min-h-screen px-6 py-10 bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] text-white relative overflow-hidden">
-      {/* Background Accent */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,0,0,0.15),transparent_50%)]"></div>
+    <div className="min-h-screen px-6 py-10 bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] text-white relative overflow-hidden"       style={{
+        background:
+          "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2b0000 100%)",
+      }}>
+
 
       {/* Header + Logo */}
       <div className="max-w-6xl mx-auto mb-10 flex justify-between items-center">

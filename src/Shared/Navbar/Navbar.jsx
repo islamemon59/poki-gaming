@@ -42,6 +42,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link
+          onClick={() => scrollTo(0, 0)}
             to="/"
             className="text-2xl md:text-3xl font-extrabold tracking-wide bg-clip-text text-red-600 hover:text-white transition-all duration-400"
           >
@@ -88,6 +89,7 @@ const Navbar = () => {
           ) : (
             <div className="hidden md:flex items-center gap-3">
               <Link
+              onClick={() => scrollTo(0, 0)}
                 to="/login"
                 className="flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold shadow-md hover:shadow-red-600/40 hover:scale-110 active:scale-95 transition-all duration-300"
               >

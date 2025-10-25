@@ -146,7 +146,7 @@ const PrivacyPolicy = () => {
           <p className="text-gray-300 leading-relaxed">
             If you have any questions, feel free to contact us at{" "}
             <a
-              href="http://innliv.com/"
+              href="#"
               className="text-red-500 underline hover:text-white"
             >
               innliv.com
@@ -154,10 +154,6 @@ const PrivacyPolicy = () => {
             .
           </p>
         </section>
-
-        <div className="mt-10 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} innliv.com — All Rights Reserved
-        </div>
       </div>
     </div>
   );
