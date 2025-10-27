@@ -63,12 +63,12 @@ const Footer = () => {
 
   const linkColumns = [
     {
-      title: "COMPANY",
+      title: "Important Page",
       links: [
         "About Us",
-        "Terms and Conditions",
         "Contact Us",
         "Privacy Policy",
+        "Terms and Conditions",
       ],
       to: ["/aboutUs", "/termsCondition", "/contactUs", "/privacyPolicy"],
     },
@@ -85,16 +85,16 @@ const Footer = () => {
           >
             <img className="w-28 sm:w-36 md:w-40" src={logo} alt="Logo" />
           </Link>
-          <p className="mt-3 text-base sm:text-lg font-semibold text-white">
-            Let the world play
+          <p className="mt-3 text-base font-semibold text-white">
+            we drop new free online games, push out an update, or corral everybody for a community bash, we’re stacking the bricks on something way bigger than just code and pixels. At innliv.com, we don’t just crank out games, we make ’em breathe. Wanna come along for the ride in the ultimate online playground? The door's wide open.
           </p>
         </div>
 
         {/* === MIDDLE: Link Columns === */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 justify-center sm:justify-start text-center sm:text-left">
+        <div className="grid gap-6 sm:gap-8 justify-center items-center text-center sm:text-start">
           {linkColumns.map((column) => (
             <div key={column.title}>
-              <h4 className="text-[11px] font-bold uppercase tracking-wider mb-3 sm:mb-4 text-gray-400">
+              <h4 className="text-lg font-bold uppercase tracking-wider mb-3 sm:mb-4 text-red-500">
                 {column.title}
               </h4>
               <ul className="space-y-2 sm:space-y-3">
