@@ -59,14 +59,14 @@ const GameDetails = () => {
     <div className="relative flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
       {/* === Layout Wrapper === */}
       <div className="flex flex-col lg:flex-row w-full gap-4">
-{/* === Left Ad (Desktop Only) === */}
-<div className="hidden lg:block sticky top-24 self-start px-2">
-  {leftAd ? (
-    <Link
-      to={leftAd?.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="
+        {/* === Left Ad (Desktop Only) === */}
+        <div className="hidden lg:block sticky top-24 self-start px-2">
+          {leftAd ? (
+            <Link
+              to={leftAd?.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
         block 
         w-[160px] h-[600px]
         overflow-hidden 
@@ -74,23 +74,24 @@ const GameDetails = () => {
         transition-transform 
         duration-300
       "
-    >
-      <img
-        src={leftAd?.image}
-        alt={leftAd?.title}
-        className="w-full h-full object-cover"
-      />
-    </Link>
-  ) : (
-    <div className="w-[160px] h-[600px] flex justify-center items-center text-gray-600 text-sm italic rounded-md bg-gray-100">
-      No ads available
-    </div>
-  )}
+            >
+              <img
+                src={leftAd?.image}
+                alt={leftAd?.title}
+                className="w-full h-full object-cover"
+              />
+            </Link>
+          ) : (
+            <div className="w-[160px] h-[600px] flex justify-center items-center text-gray-600 text-sm italic rounded-md bg-gray-100">
+              No ads available
+            </div>
+          )}
 
-  {/* Label below left ad */}
-  <p className="text-center text-xs text-gray-500 mt-1 italic">Advertisement</p>
-</div>
-
+          {/* Label below left ad */}
+          <p className="text-center text-xs text-gray-500 mt-1 italic">
+            Advertisement
+          </p>
+        </div>
 
         {/* === Header / Logo === */}
         <div className="fixed z-50 top-2 left-3 lg:left-6">
@@ -130,43 +131,44 @@ const GameDetails = () => {
             )}
           </div>
 
-{/* === Bottom Ads === */}
-<div className="flex flex-col justify-center items-center mb-4 px-2">
-  <div className="flex flex-wrap justify-center items-center">
-    {bottomAds?.length > 0 ? (
-      bottomAds.map((ad) => (
-        <Link
-          key={ad?._id}
-          to={ad?.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
+          {/* === Bottom Ads === */}
+          <div className="flex flex-col justify-center items-center mb-4 px-2">
+            <div className="flex flex-wrap justify-center items-center">
+              {bottomAds?.length > 0 ? (
+                bottomAds.map((ad) => (
+                  <Link
+                    key={ad?._id}
+                    to={ad?.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
             w-[320px] h-[50px] 
             sm:w-[468px] sm:h-[60px] 
             md:w-[728px] md:h-[90px]
             overflow-hidden shadow-lg 
-            hover:scale-105 transition-transform duration-300
+             transition-transform duration-300
             flex justify-center items-center
           "
-        >
-          <img
-            src={ad?.image}
-            alt={ad?.title}
-            className="w-full h-full object-cover"
-          />
-        </Link>
-      ))
-    ) : (
-      <div className="w-full flex justify-center items-center text-gray-600 text-sm italic">
-        No ads available
-      </div>
-    )}
-  </div>
+                  >
+                    <img
+                      src={ad?.image}
+                      alt={ad?.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </Link>
+                ))
+              ) : (
+                <div className="w-full flex justify-center items-center text-gray-600 text-sm italic">
+                  No ads available
+                </div>
+              )}
+            </div>
 
-  {/* Label below all bottom ads */}
-  <p className="text-center text-xs text-gray-500 mt-1 italic">Advertisement</p>
-</div>
-
+            {/* Label below all bottom ads */}
+            <p className="text-center text-xs text-gray-500 mt-1 italic">
+              Advertisement
+            </p>
+          </div>
 
           {/* === Recommended Games === */}
           <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white text-center">
@@ -205,7 +207,7 @@ const GameDetails = () => {
 
           {/* === Game Description === */}
           <div className="mt-10 bg-gray-900 rounded-xl p-6 shadow-lg border border-red-700/30 text-white max-w-5xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex flex-col md:flex-row gap-6 items-stretch">
               {game?.thumbnail && (
                 <img
                   src={game.thumbnail}
@@ -216,78 +218,84 @@ const GameDetails = () => {
 
               <div className="flex-1 flex flex-col justify-between">
                 <h3 className="text-2xl font-bold mb-2">{game?.title}</h3>
+
                 {game?.category && (
                   <p className="text-sm font-semibold text-red-500 mb-4">
                     Category:{" "}
                     <span className="text-white">{game.category}</span>
                   </p>
                 )}
-                {game?.description ? (
-                  <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                    {game.description}
-                  </p>
-                ) : (
-                  <p className="text-gray-500 text-sm italic">
-                    No description available.
-                  </p>
-                )}
+
+                <div className="flex-1">
+                  {game?.description ? (
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed h-full">
+                      {game.description}
+                    </p>
+                  ) : (
+                    <p className="text-gray-500 text-sm italic h-full">
+                      No description available.
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-
         </div>
 
-{/* === Right Sidebar Ads (Desktop Only) === */}
-<div className="hidden lg:flex flex-col gap-6 sticky top-6 self-start">
-  {/* === Top Ad (Medium Rectangle 300x250) === */}
-  <div className="w-[300px] h-[250px]">
-    {rightAd ? (
-      <Link
-        to={rightAd?.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block w-full h-full overflow-hidden shadow-lg transition-transform duration-300"
-      >
-        <img
-          src={rightAd?.image}
-          alt={rightAd?.title}
-          className="w-full h-full object-cover"
-        />
-      </Link>
-    ) : (
-      <div className="w-full h-full flex justify-center items-center text-gray-600 text-sm italic bg-gray-100">
-        No ads available
-      </div>
-    )}
-    {/* Label below first ad */}
-    <p className="text-center text-xs font-xs text-gray-500 mt-0 italic">Sponsored</p>
-  </div>
+        {/* === Right Sidebar Ads (Desktop Only) === */}
+        <div className="hidden lg:flex flex-col gap-6 sticky top-6 self-start">
+          {/* === Top Ad (Medium Rectangle 300x250) === */}
+          <div className="w-[300px] h-[250px]">
+            {rightAd ? (
+              <Link
+                to={rightAd?.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full h-full overflow-hidden shadow-lg transition-transform duration-300"
+              >
+                <img
+                  src={rightAd?.image}
+                  alt={rightAd?.title}
+                  className="w-full h-full object-cover"
+                />
+              </Link>
+            ) : (
+              <div className="w-full h-full flex justify-center items-center text-gray-600 text-sm italic bg-gray-100">
+                No ads available
+              </div>
+            )}
+            {/* Label below first ad */}
+            <p className="text-center text-xs font-xs text-gray-500 mt-0 italic">
+              Sponsored
+            </p>
+          </div>
 
-  {/* === Bottom Ad (Half Page 300x600) === */}
-  <div className="w-[300px] h-[600px]">
-    {rightAd ? (
-      <Link
-        to={rightAd?.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block w-full h-full overflow-hidden shadow-lg transition-transform duration-300"
-      >
-        <img
-          src={rightAd?.image}
-          alt={rightAd?.title}
-          className="w-full h-full object-cover"
-        />
-      </Link>
-    ) : (
-      <div className="w-full h-full flex justify-center items-center text-gray-600 text-sm italic bg-gray-100">
-        No ads available
-      </div>
-    )}
-    {/* Label below second ad */}
-    <p className="text-center text-xs text-gray-500 mt-1 italic">Advertisement</p>
-  </div>
-</div>
-
+          {/* === Bottom Ad (Half Page 300x600) === */}
+          <div className="w-[300px] h-[250px]">
+            {rightAd ? (
+              <Link
+                to={rightAd?.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full h-full overflow-hidden shadow-lg transition-transform duration-300"
+              >
+                <img
+                  src={rightAd?.image}
+                  alt={rightAd?.title}
+                  className="w-full h-full object-cover"
+                />
+              </Link>
+            ) : (
+              <div className="w-full h-full flex justify-center items-center text-gray-600 text-sm italic bg-gray-100">
+                No ads available
+              </div>
+            )}
+            {/* Label below second ad */}
+            <p className="text-center text-xs text-gray-500 mt-1 italic">
+              Advertisement
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
