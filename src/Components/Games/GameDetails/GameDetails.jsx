@@ -6,6 +6,7 @@ import Loader from "../../../Shared/Loader/Loader";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 import logo from "../../../assets/logo.png";
 import CategoryList from "../CategoryList/CategoryList";
+import { Helmet } from "react-helmet-async";
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -57,6 +58,69 @@ const GameDetails = () => {
 
   return (
     <div className="relative flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
+      <Helmet>
+        {/* FIX: Prioritizes game.metaTitle for the page title, 
+    falling back to game.title
+  */}
+        <title>
+          {game?.metaTitle || game?.title
+            ? `${game.metaTitle || game.title} | Innliv Gaming`
+            : "Innliv Gaming"}
+        </title>
+
+        {/* YOUR CODE (ALREADY CORRECT): Uses game.metaDescription, 
+    falling back to game.description
+  */}
+        <meta
+          name="description"
+          content={
+            game?.metaDescription ||
+            game?.description ||
+            "Play exciting games on Innliv Gaming."
+          }
+        />
+
+        {/* YOUR CODE (ALREADY CORRECT): Uses game.metaKeywords
+         */}
+        <meta
+          name="keywords"
+          content={game?.metaKeywords || "games, online, play"}
+        />
+
+        {/* --- Open Graph & Twitter (Social Media) Tags --- */}
+
+        {/* FIX: Uses game.metaTitle for social media sharing
+         */}
+        <meta property="og:title" content={game?.metaTitle || game?.title} />
+        <meta name="twitter:title" content={game?.metaTitle || game?.title} />
+
+        {/* FIX: Uses game.metaDescription (or description) for social media
+         */}
+        <meta
+          property="og:description"
+          content={
+            game?.metaDescription ||
+            game?.description ||
+            "Play exciting games on Innliv Gaming."
+          }
+        />
+        <meta
+          name="twitter:description"
+          content={
+            game?.metaDescription ||
+            game?.description ||
+            "Play exciting games on Innliv Gaming."
+          }
+        />
+
+        {/* These were already correct */}
+        <meta property="og:image" content={game?.thumbnail} />
+        <meta name="twitter:image" content={game?.thumbnail} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:type" content="game" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       {/* === Layout Wrapper === */}
       <div className="flex flex-col lg:flex-row w-full gap-4">
         {/* === Left Ad (Desktop Only) === */}
@@ -207,37 +271,42 @@ const GameDetails = () => {
 
           {/* === Game Description === */}
           <div className="mt-10 bg-gray-900 rounded-xl p-6 shadow-lg border border-red-700/30 text-white max-w-5xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-6 items-stretch">
-              {game?.thumbnail && (
-                <img
-                  src={game.thumbnail}
-                  alt={game.title}
-                  className="w-full md:w-64 h-40 md:h-48 object-cover rounded-lg shadow-md flex-shrink-0"
-                />
-              )}
-
-              <div className="flex-1 flex flex-col justify-between">
+            {/* Top row: Title & Category on left, Thumbnail on right */}
+            <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
+              {/* Left: Title & Category */}
+              <div className="flex-1">
                 <h3 className="text-2xl font-bold mb-2">{game?.title}</h3>
-
                 {game?.category && (
-                  <p className="text-sm font-semibold text-red-500 mb-4">
+                  <p className="text-sm font-semibold text-red-500">
                     Category:{" "}
                     <span className="text-white">{game.category}</span>
                   </p>
                 )}
-
-                <div className="flex-1">
-                  {game?.description ? (
-                    <p className="text-gray-300 text-sm md:text-base leading-relaxed h-full">
-                      {game.description}
-                    </p>
-                  ) : (
-                    <p className="text-gray-500 text-sm italic h-full">
-                      No description available.
-                    </p>
-                  )}
-                </div>
               </div>
+
+              {/* Right: Thumbnail */}
+              {game?.thumbnail && (
+                <div className="md:w-64 flex-shrink-0">
+                  <img
+                    src={game.thumbnail}
+                    alt={game.title}
+                    className="w-full h-48 md:h-48 object-cover rounded-lg shadow-md"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Bottom row: Full-width description */}
+            <div className="mt-6">
+              {game?.description ? (
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-line">
+                  {game.description}
+                </p>
+              ) : (
+                <p className="text-gray-500 text-sm italic">
+                  No description available.
+                </p>
+              )}
             </div>
           </div>
         </div>
