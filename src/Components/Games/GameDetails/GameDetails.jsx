@@ -60,7 +60,7 @@ const GameDetails = () => {
       {/* === Layout Wrapper === */}
       <div className="flex flex-col lg:flex-row w-full gap-4">
         {/* === Left Ad (Desktop Only) === */}
-        <div className="hidden lg:block sticky top-24 self-start px-2">
+        <div className="hidden lg:block sticky top-24 self-start">
           {leftAd ? (
             <Link
               to={leftAd?.link}
@@ -270,7 +270,6 @@ const GameDetails = () => {
             </p>
           </div>
 
-          {/* === Bottom Ad (Half Page 300x600) === */}
           <div className="w-[300px] h-[250px]">
             {rightAd ? (
               <Link
@@ -291,6 +290,32 @@ const GameDetails = () => {
               </div>
             )}
             {/* Label below second ad */}
+            <p className="text-center text-xs text-gray-500 mt-1 italic">
+              Advertisement
+            </p>
+          </div>
+
+          <div className="hidden 2xl:block w-[300px] h-[250px]">
+            {rightAd ? (
+              <Link
+                to={rightAd?.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full h-full overflow-hidden shadow-lg transition-transform duration-300"
+              >
+                <img
+                  src={rightAd?.image}
+                  alt={rightAd?.title}
+                  className="w-full h-full object-cover"
+                />
+              </Link>
+            ) : (
+              <div className="w-full h-full flex justify-center items-center text-gray-600 text-sm italic bg-gray-100">
+                No ads available
+              </div>
+            )}
+
+            {/* Label below ad */}
             <p className="text-center text-xs text-gray-500 mt-1 italic">
               Advertisement
             </p>
