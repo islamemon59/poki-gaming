@@ -299,9 +299,10 @@ const GameDetails = () => {
             {/* Bottom row: Full-width description */}
             <div className="mt-6">
               {game?.description ? (
-                <p className="text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-line">
-                  {game.description}
-                </p>
+                <div
+                  className="prose max-w-full"
+                  dangerouslySetInnerHTML={{ __html: game.description }}
+                ></div>
               ) : (
                 <p className="text-gray-500 text-sm italic">
                   No description available.
