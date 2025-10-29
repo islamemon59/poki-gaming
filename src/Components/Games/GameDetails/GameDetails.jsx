@@ -21,14 +21,16 @@ const GameDetails = () => {
     },
   });
 
-  // Fetch single game
   const { data: game, isLoading } = useQuery({
     queryKey: ["game", id],
+    enabled: !!id, // 👈 Only fetch when id exists
     queryFn: async () => {
       const { data } = await axios.get(`http://localhost:5000/games/${id}`);
       return data;
     },
   });
+
+  console.log(game);
 
   // Fetch ads
   const { data: ads } = useQuery({
@@ -58,69 +60,31 @@ const GameDetails = () => {
 
   return (
     <div className="relative flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
-      <Helmet>
-        {/* FIX: Prioritizes game.metaTitle for the page title, 
-    falling back to game.title
-  */}
-        <title>
-          {game?.metaTitle || game?.title
-            ? `${game.metaTitle || game.title} | Innliv Gaming`
-            : "Innliv Gaming"}
-        </title>
-
-        {/* YOUR CODE (ALREADY CORRECT): Uses game.metaDescription, 
-    falling back to game.description
-  */}
-        <meta
-          name="description"
-          content={
-            game?.metaDescription ||
-            game?.description ||
-            "Play exciting games on Innliv Gaming."
-          }
-        />
-
-        {/* YOUR CODE (ALREADY CORRECT): Uses game.metaKeywords
-         */}
-        <meta
-          name="keywords"
-          content={game?.metaKeywords || "games, online, play"}
-        />
-
-        {/* --- Open Graph & Twitter (Social Media) Tags --- */}
-
-        {/* FIX: Uses game.metaTitle for social media sharing
-         */}
-        <meta property="og:title" content={game?.metaTitle || game?.title} />
-        <meta name="twitter:title" content={game?.metaTitle || game?.title} />
-
-        {/* FIX: Uses game.metaDescription (or description) for social media
-         */}
-        <meta
-          property="og:description"
-          content={
-            game?.metaDescription ||
-            game?.description ||
-            "Play exciting games on Innliv Gaming."
-          }
-        />
-        <meta
-          name="twitter:description"
-          content={
-            game?.metaDescription ||
-            game?.description ||
-            "Play exciting games on Innliv Gaming."
-          }
-        />
-
-        {/* These were already correct */}
-        <meta property="og:image" content={game?.thumbnail} />
-        <meta name="twitter:image" content={game?.thumbnail} />
-        <meta property="og:url" content={window.location.href} />
-        <meta property="og:type" content="game" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
-
+      {game && (
+        <Helmet>
+          <title>{`${game.metaTitle || game.title} | Innliv Gaming`}</title>
+          <meta
+            name="description"
+            content={
+              game.metaDescription ||
+              game.description ||
+              "Play exciting games on Innliv Gaming."
+            }
+          />
+          <meta
+            name="keywords"
+            content={game.metaKeywords || "games, online, play"}
+          />
+          <meta property="og:title" content={game.metaTitle || game.title} />
+          <meta
+            property="og:description"
+            content={game.metaDescription || game.description}
+          />
+          <meta property="og:image" content={game.thumbnail} />
+          <meta property="og:url" content={window.location.href} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Helmet>
+      )}
       {/* === Layout Wrapper === */}
       <div className="flex flex-col lg:flex-row w-full gap-4">
         {/* === Left Ad (Desktop Only) === */}
