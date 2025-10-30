@@ -86,7 +86,12 @@ const Footer = () => {
             <img className="w-28 sm:w-36 md:w-40" src={logo} alt="Logo" />
           </Link>
           <p className="mt-3 text-base font-semibold text-white">
-            we drop new free online games, push out an update, or corral everybody for a community bash, we’re stacking the bricks on something way bigger than just code and pixels. At innliv.com, we don’t just crank out games, we make ’em breathe. Wanna come along for the ride in the ultimate online playground? The door's wide open.
+            We drop new free online games, push out an update, or corral
+            everybody for a community bash, we’re stacking the bricks on
+            something way bigger than just code and pixels. At innliv.com, we
+            don’t just crank out games, we make ’em breathe. Wanna come along
+            for the ride in the ultimate online playground? The door's wide
+            open.
           </p>
         </div>
 
@@ -169,7 +174,8 @@ const Footer = () => {
 
       {/* === BOTTOM COPYRIGHT === */}
       <div className="border-t border-gray-600 mt-10 pt-6 text-center text-gray-400 text-xs sm:text-sm">
-        © {new Date().getFullYear()} innliv.com — All Rights Reserved
+        © {new Date().getFullYear()} <Link className="font-extrabold hover:text-red-500 transition-all duration-300" to="innliv.com">innliv.com</Link> —
+        All Rights Reserved
       </div>
     </footer>
   );

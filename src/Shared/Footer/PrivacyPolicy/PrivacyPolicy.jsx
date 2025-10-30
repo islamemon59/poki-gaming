@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import logo from "../../../assets/logo.png"
+import logo from "../../../assets/logo.png";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 const PrivacyPolicy = () => {
@@ -23,17 +23,23 @@ const PrivacyPolicy = () => {
         </Link>
       </div>
 
-              <h1 className="text-4xl lg:text-5xl font-extrabold text-center mb-12 tracking-tight">
-          Privacy <span className="text-red-500">Policy</span>
-        </h1>
+      <h1 className="text-4xl lg:text-5xl font-extrabold text-center mb-12 tracking-tight">
+        Privacy <span className="text-red-500">Policy</span>
+      </h1>
 
       {/* Main Content */}
       <div className="max-w-5xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg p-8 lg:p-12 border border-red-600/20">
         {/* Intro */}
         <section className="mb-8 space-y-4 text-gray-200 leading-relaxed">
           <p>
-            At <span className="text-red-500 font-semibold">innliv.com</span>,
-            we truly value your trust when you play our games and use our
+            At{" "}
+            <Link
+              to="/innliv.com"
+              className="text-red-500 font-semibold underline transition-all duration-300"
+            >
+              innliv.com
+            </Link>
+            , we truly value your trust when you play our games and use our
             services. Keeping your information safe is not just something we
             have to do — it’s how we operate. This Privacy Policy explains what
             information we collect, why we collect it, how we use it, and how we
@@ -145,12 +151,12 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-bold text-red-500 mb-4">Contact</h2>
           <p className="text-gray-300 leading-relaxed">
             If you have any questions, feel free to contact us at{" "}
-            <a
-              href="#"
-              className="text-red-500 underline hover:text-white"
+            <Link
+              to="/innliv.com"
+              className="text-red-500 underline hover:text-white transition-all duration-300 font-semibold"
             >
               innliv.com
-            </a>
+            </Link>
             .
           </p>
         </section>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
-import logo from "../../../assets/logo.png"
+import logo from "../../../assets/logo.png";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
+import Swal from "sweetalert2";
 
 const ContactUs = () => {
   useDynamicTitle("Contact Us");
@@ -18,7 +19,15 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Example: You can later replace this with API or email logic
-    alert("Message sent successfully!");
+    // With this:
+    Swal.fire({
+      title: "✅ Message Sent!",
+      text: "Your message has been delivered successfully.",
+      icon: "success",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#ef4444",
+      background: "#f9fafb",
+    });
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -40,9 +49,9 @@ const ContactUs = () => {
         </Link>
       </div>
 
-              <h1 className="text-4xl lg:text-5xl font-extrabold text-center mb-12 tracking-tight">
-          Contact <span className="text-red-500">Us</span>
-        </h1>
+      <h1 className="text-4xl lg:text-5xl font-extrabold text-center mb-12 tracking-tight">
+        Contact <span className="text-red-500">Us</span>
+      </h1>
 
       {/* Form Card */}
       <div className="w-full max-w-3xl bg-white/10 backdrop-blur-lg p-10 rounded-2xl shadow-2xl border border-red-600/20">
