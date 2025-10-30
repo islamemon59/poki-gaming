@@ -50,7 +50,7 @@ const ContactUs = () => {
       </div>
 
       <h1 className="text-4xl lg:text-5xl font-extrabold text-center mb-12 tracking-tight">
-        Contact <span className="text-red-500">Us</span>
+        Contact <span className="text-red-500">us</span>
       </h1>
 
       {/* Form Card */}

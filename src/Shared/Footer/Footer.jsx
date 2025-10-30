@@ -1,4 +1,9 @@
-import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa"; // Icons for social media and language
+import {
+  FaFacebookF,
+  FaYoutube,
+  FaInstagram,
+  FaPinterestP,
+} from "react-icons/fa"; // Icons for social media and language
 import { Link } from "react-router";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
@@ -145,7 +150,7 @@ const Footer = () => {
 
           <div className="flex justify-center sm:justify-end space-x-3 sm:space-x-4 mt-6">
             <Link
-              to="#"
+              to="https://www.instagram.com/innliv/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white rounded-full group hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300"
@@ -153,15 +158,25 @@ const Footer = () => {
               <FaInstagram className="text-black group-hover:text-white w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
             <Link
-              to="#"
+              to="https://www.facebook.com/people/InNliv/61583208864825/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white rounded-full group hover:bg-blue-600 transition-all duration-300"
             >
               <FaFacebookF className="text-black group-hover:text-white w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
+
+            {/* Pinterest Icon */}
             <Link
-              to="#"
+              to="https://www.pinterest.com/forme458/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white rounded-full group hover:bg-red-500 transition-all duration-300"
+            >
+              <FaPinterestP className="text-black group-hover:text-white w-4 h-4 sm:w-5 sm:h-5" />
+            </Link>
+            <Link
+              to="https://www.youtube.com/channel/UCS23cj0CSU7yu1NX_77reAw"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white rounded-full group hover:bg-red-600 transition-all duration-300"
@@ -174,8 +189,14 @@ const Footer = () => {
 
       {/* === BOTTOM COPYRIGHT === */}
       <div className="border-t border-gray-600 mt-10 pt-6 text-center text-gray-400 text-xs sm:text-sm">
-        © {new Date().getFullYear()} <Link className="font-extrabold hover:text-red-500 transition-all duration-300" to="innliv.com">innliv.com</Link> —
-        All Rights Reserved
+        © {new Date().getFullYear()}{" "}
+        <Link
+          className="font-extrabold hover:text-red-500 transition-all duration-300"
+          to="innliv.com"
+        >
+          innliv.com
+        </Link>{" "}
+        — All Rights Reserved
       </div>
     </footer>
   );

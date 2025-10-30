@@ -26,7 +26,7 @@ const AboutUs = () => {
       {/* Main Content */}
       <main className="relative z-10 px-6 lg:px-20 py-10 lg:py-20 max-w-6xl mx-auto">
         <h1 className="text-5xl lg:text-6xl font-extrabold text-center mb-12 tracking-tight">
-          About <span className="text-red-500">Us</span>
+          About <span className="text-red-500">us</span>
         </h1>
 
         <div className="bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl p-10 shadow-2xl space-y-8">
