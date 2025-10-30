@@ -34,7 +34,7 @@ const PrivacyPolicy = () => {
           <p>
             At{" "}
             <Link
-              to="/innliv.com"
+              to="https://innliv.com/"
               className="text-red-500 font-semibold underline transition-all duration-300"
             >
               innliv.com
@@ -152,7 +152,7 @@ const PrivacyPolicy = () => {
           <p className="text-gray-300 leading-relaxed">
             If you have any questions, feel free to contact us at{" "}
             <Link
-              to="/innliv.com"
+              to="https://innliv.com/"
               className="text-red-500 underline hover:text-white transition-all duration-300 font-semibold"
             >
               innliv.com

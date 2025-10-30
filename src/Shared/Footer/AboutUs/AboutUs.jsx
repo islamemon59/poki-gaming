@@ -26,12 +26,12 @@ const AboutUs = () => {
       {/* Main Content */}
       <main className="relative z-10 px-6 lg:px-20 py-10 lg:py-20 max-w-6xl mx-auto">
         <h1 className="text-5xl lg:text-6xl font-extrabold text-center mb-12 tracking-tight">
-          About <span className="text-red-500">us</span>
+          About <span className="text-red-500">Us</span>
         </h1>
 
         <div className="bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl p-10 shadow-2xl space-y-8">
           <p className="text-gray-200 text-lg leading-relaxed">
-            <Link to="/innliv.com" className="text-red-500 font-semibold">innliv.com</Link> began
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">innliv.com</Link> began
             its journey in 2025 with a passionate team of dreamers who believed
             that gaming could be more than entertainment — a way to connect
             people globally through shared fun and imagination.
@@ -49,14 +49,14 @@ const AboutUs = () => {
             <span className="font-semibold text-red-500">player-first</span>.
             Every update, every idea, and every challenge we take on starts with
             our players. Their passion shapes{" "}
-            <Link to="/innliv.com" className="text-red-500 font-semibold">innliv.com</Link>,
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">innliv.com</Link>,
             making it more than just a platform — it’s a community.
           </p>
 
           <p className="text-gray-200 text-lg leading-relaxed">
             We’re bold, creative, and sometimes a little rebellious. Every
             event, release, and story is built with heart. At{" "}
-            <Link to="/innliv.com" className="text-red-500 font-semibold">innliv.com</Link>, we
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">innliv.com</Link>, we
             don’t just make games — we make them breathe.
           </p>
 

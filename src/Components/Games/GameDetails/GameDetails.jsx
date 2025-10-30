@@ -110,7 +110,7 @@ const GameDetails = () => {
               />
             </Link>
           ) : (
-            <div className="w-[160px] h-[600px] flex justify-center items-center text-gray-600 text-sm italic rounded-md bg-gray-100">
+            <div className="w-[160px] h-[600px] flex justify-center items-center text-gray-600 text-sm italic bg-gray-100">
               No ads available
             </div>
           )}

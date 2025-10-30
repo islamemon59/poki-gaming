@@ -75,7 +75,7 @@ const Footer = () => {
         "Privacy Policy",
         "Terms and Conditions",
       ],
-      to: ["/aboutUs", "/contactUs", "/privacyPolicy", "/termsCondition"],
+      to: ["/about_us", "/contact_us", "/privacy_policy", "/terms_and_condition"],
     },
   ];
 
@@ -192,7 +192,7 @@ const Footer = () => {
         © {new Date().getFullYear()}{" "}
         <Link
           className="font-extrabold hover:text-red-500 transition-all duration-300"
-          to="innliv.com"
+          to="https://innliv.com/"
         >
           innliv.com
         </Link>{" "}

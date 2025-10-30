@@ -32,7 +32,7 @@ const TermsAndConditions = () => {
         <div className="bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl p-10 shadow-2xl space-y-8 text-gray-200 leading-relaxed">
           <p>
             Welcome to{" "}
-            <Link to="/innliv.com" className="text-red-500 font-semibold">
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">
               innliv.com
             </Link>
             . By using our website, games, or services, you agree to these Terms
@@ -52,7 +52,7 @@ const TermsAndConditions = () => {
             2. The Nature of Our Services
           </h2>
           <p>
-            <Link to="/innliv.com" className="text-red-500 font-semibold">
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">
               innliv.com
             </Link>{" "}
             develops and publishes games for entertainment. While we strive for
@@ -74,7 +74,7 @@ const TermsAndConditions = () => {
           </h2>
           <p>
             All game content, graphics, and code belong to{" "}
-            <Link to="/innliv.com" className="text-red-500 font-semibold">
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">
               innliv.com
             </Link>{" "}
             or its partners. You are granted a personal, non-transferable
@@ -108,7 +108,7 @@ const TermsAndConditions = () => {
             By using our platform, you consent to their use as described in our
             Privacy Policy. Data transmission always carries some risk, and
             while we follow industry standards,{" "}
-            <Link to="/innliv.com" className="text-red-500 font-semibold">
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">
               innliv.com
             </Link>{" "}
             is not liable for breaches beyond reasonable control.
@@ -137,7 +137,7 @@ const TermsAndConditions = () => {
             10. Limitation of Liability
           </h2>
           <p>
-            <Link to="/innliv.com" className="text-red-500 font-semibold">
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">
               innliv.com
             </Link>{" "}
             is not liable for any direct, indirect, or consequential damages
@@ -177,7 +177,7 @@ const TermsAndConditions = () => {
           <p>
             These Terms, along with our Privacy Policy, form the complete
             agreement between you and{" "}
-            <Link to="/innliv.com" className="text-red-500 font-semibold">
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">
               innliv.com
             </Link>
             .
@@ -190,7 +190,7 @@ const TermsAndConditions = () => {
             These Terms exist to protect our community and ensure fair play. By
             using our platform, you help us maintain a safe and enjoyable gaming
             environment. Thank you for being part of{" "}
-            <Link to="/innliv.com" className="text-red-500 font-semibold">
+            <Link to="https://innliv.com/" className="text-red-500 font-semibold">
               innliv.com
             </Link>
             .

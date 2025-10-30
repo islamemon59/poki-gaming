@@ -49,19 +49,19 @@ export const router = createBrowserRouter([
         Component: Register,
       },
         {
-        path: "/aboutUs",
+        path: "/about_us",
         Component: AboutUs,
       },
         {
-        path: "/termsCondition",
+        path: "/terms_and_condition",
         Component: TermsAndConditions,
       },
         {
-        path: "/privacyPolicy",
+        path: "/privacy_policy",
         Component: PrivacyPolicy,
       },
         {
-        path: "/contactUs",
+        path: "/contact_us",
         Component: ContactUs,
       },
        
