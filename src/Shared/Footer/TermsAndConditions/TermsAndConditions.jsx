@@ -200,7 +200,7 @@ const TermsAndConditions = () => {
         {/* CTA */}
         <div className="flex justify-center mt-12">
           <Link
-            to="/contactUs"
+            to="/contact_us"
             className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-lg rounded-full shadow-lg transition-all"
           >
             Contact Support
