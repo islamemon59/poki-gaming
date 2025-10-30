@@ -18,7 +18,7 @@ const CategoryGames = () => {
     queryKey: ["gamesByCategory", category],
     queryFn: async () => {
       const { data } = await axios.get(
-        `http://localhost:5000/games/category/${category}`
+        `https://server.innliv.com/games/category/${category}`
       );
       return data.games || [];
     },

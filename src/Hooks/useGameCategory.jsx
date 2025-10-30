@@ -5,7 +5,7 @@ const useGameCategories = () => {
   return useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:5000/categories");
+      const { data } = await axios.get("https://server.innliv.com/categories");
       return data?.categories || [];
     },
   });

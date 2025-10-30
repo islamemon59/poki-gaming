@@ -14,7 +14,7 @@ const SearchBar = () => {
         setIsLoading(true);
 
         const { data } = await axios.get(
-          `http://localhost:5000/search/games${title ? `?title=${title}` : ""}`
+          `https://server.innliv.com/search/games${title ? `?title=${title}` : ""}`
         );
 
         setResult(data);

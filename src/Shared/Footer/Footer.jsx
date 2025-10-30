@@ -36,7 +36,7 @@ const Footer = () => {
 
     try {
       // 🚀 2. API request
-      const { data } = await axios.post("http://localhost:5000/subscribe", {
+      const { data } = await axios.post("https://server.innliv.com/subscribe", {
         email,
       });
 

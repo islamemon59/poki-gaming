@@ -16,7 +16,7 @@ const GameDetails = () => {
   const { data: games } = useQuery({
     queryKey: ["games"],
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:5000/games");
+      const { data } = await axios.get("https://server.innliv.com/games");
       return data;
     },
   });
@@ -25,7 +25,7 @@ const GameDetails = () => {
     queryKey: ["game", id],
     enabled: !!id, // 👈 Only fetch when id exists
     queryFn: async () => {
-      const { data } = await axios.get(`http://localhost:5000/games/${id}`);
+      const { data } = await axios.get(`https://server.innliv.com/games/${id}`);
       return data;
     },
   });
@@ -36,7 +36,7 @@ const GameDetails = () => {
   const { data: ads } = useQuery({
     queryKey: ["ads"],
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:5000/ads");
+      const { data } = await axios.get("https://server.innliv.com/ads");
       return data?.ads || [];
     },
   });
