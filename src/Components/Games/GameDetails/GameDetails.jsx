@@ -7,6 +7,7 @@ import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 import logo from "../../../assets/logo.png";
 import CategoryList from "../CategoryList/CategoryList";
 import { Helmet } from "react-helmet-async";
+import RenderAdCode from "../RenderAdCode/RenderAdCode";
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -30,8 +31,6 @@ const GameDetails = () => {
     },
   });
 
-  console.log(game);
-
   // Fetch ads
   const { data: ads } = useQuery({
     queryKey: ["ads"],
@@ -54,9 +53,11 @@ const GameDetails = () => {
     url && (url.startsWith("http://") || url.startsWith("https://"));
 
   // Separate ads by position
-  const leftAd = ads?.find((ad) => ad.position === "left");
-  const rightAd = ads?.find((ad) => ad.position === "right");
-  const bottomAds = ads?.filter((ad) => ad.position === "bottom");
+  // Separate ads by position
+  const leftAds = ads?.filter((ad) => ad.position === "left") || [];
+  const rightAds = ads?.filter((ad) => ad.position === "right") || [];
+  const bottomAds = ads?.filter((ad) => ad.position === "bottom") || [];
+  console.log(rightAds[0]);
 
   return (
     <div className="relative flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
@@ -88,34 +89,37 @@ const GameDetails = () => {
       {/* === Layout Wrapper === */}
       <div className="flex flex-col lg:flex-row w-full gap-4">
         {/* === Left Ad (Desktop Only) === */}
-        <div className="hidden lg:block sticky top-24 self-start">
-          {leftAd ? (
-            <Link
-              to={leftAd?.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-        block 
-        w-[160px] h-[600px]
-        overflow-hidden 
-        shadow-lg 
-        transition-transform 
-        duration-300
-      "
-            >
-              <img
-                src={leftAd?.image}
-                alt={leftAd?.title}
-                className="w-full h-full object-cover"
-              />
-            </Link>
+        <div className="hidden lg:flex flex-col gap-6 sticky top-24 self-start">
+          {leftAds.length > 0 ? (
+            leftAds.map((ad) =>
+              ad.type === "image" ? (
+                <a
+                  key={ad._id}
+                  href={ad.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-[160px] h-[600px] overflow-hidden shadow-lg"
+                >
+                  <img
+                    src={ad.image}
+                    alt={ad.title}
+                    className="w-full h-full object-cover"
+                  />
+                </a>
+              ) : (
+                <div
+                  key={ad._id}
+                  className="w-[160px] h-[600px] overflow-hidden shadow-lg"
+                >
+                  <RenderAdCode code={ad.content} />
+                </div>
+              )
+            )
           ) : (
             <div className="w-[160px] h-[600px] flex justify-center items-center text-gray-600 text-sm italic bg-black">
               No ads available
             </div>
           )}
-
-          {/* Label below left ad */}
           <p className="text-center text-xs text-gray-500 mt-1 italic">
             Advertisement
           </p>
@@ -161,96 +165,97 @@ const GameDetails = () => {
 
           {/* === Bottom Ads === */}
           <div className="flex flex-col justify-center items-center mb-4 px-2">
-            <div className="flex flex-wrap justify-center items-center">
-              {bottomAds?.length > 0 ? (
-                bottomAds.map((ad) => (
-                  <Link
-                    key={ad?._id}
-                    to={ad?.link}
+            {bottomAds.length > 0 ? (
+              bottomAds.map((ad) =>
+                ad.type === "image" ? (
+                  <a
+                    key={ad._id}
+                    href={ad.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="
-            w-[320px] h-[50px] 
-            sm:w-[468px] sm:h-[60px] 
-            md:w-[728px] md:h-[90px]
-            overflow-hidden shadow-lg 
-             transition-transform duration-300
-            flex justify-center items-center
-          "
+                    className="w-[320px] h-[50px] sm:w-[468px] sm:h-[60px] md:w-[728px] md:h-[90px] overflow-hidden shadow-lg mb-2"
                   >
                     <img
-                      src={ad?.image}
-                      alt={ad?.title}
+                      src={ad.image}
+                      alt={ad.title}
                       className="w-full h-full object-cover"
                     />
-                  </Link>
-                ))
-              ) : (
-                <div className="w-full flex justify-center items-center text-gray-600 text-sm italic">
-                  No ads available
-                </div>
-              )}
-            </div>
-
-            {/* Label below all bottom ads */}
+                  </a>
+                ) : (
+                  <div
+                    key={ad._id}
+                    className="w-[320px] h-[50px] sm:w-[468px] sm:h-[60px] md:w-[728px] md:h-[90px] overflow-hidden shadow-lg mb-2"
+                  >
+                    <RenderAdCode code={ad.content} />
+                  </div>
+                )
+              )
+            ) : (
+              <div className="w-full flex justify-center items-center text-gray-600 text-sm italic">
+                No ads available
+              </div>
+            )}
             <p className="text-center text-xs text-gray-500 mt-1 italic">
               Advertisement
             </p>
           </div>
 
-{/* === Game Description === */}
-<div className="mt-10 bg-gray-900 rounded-xl p-6 shadow-lg border border-red-700/30 text-white mx-auto mb-4">
-  {/* Top row: Title & Category on left, Thumbnail on right */}
-  <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
-    {/* Left: Title & Category */}
-    <div className="flex-1">
-      <h3 className="text-2xl font-bold mb-2">{game?.title}</h3>
-      {game?.category && (
-        <p className="text-sm font-semibold text-red-500">
-          Category:{" "}
-          <span className="text-white">{game.category}</span>
-        </p>
-      )}
-    </div>
+          {/* === Game Description === */}
+          <div className="mt-10 bg-gray-900 rounded-xl p-6 shadow-lg border border-red-700/30 text-white mx-auto mb-4">
+            {/* Top row: Title & Category on left, Thumbnail on right */}
+            <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
+              {/* Left: Title & Category */}
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">{game?.title}</h3>
+                {game?.category && (
+                  <p className="text-sm font-semibold text-red-500">
+                    Category:{" "}
+                    <span className="text-white">{game.category}</span>
+                  </p>
+                )}
+              </div>
 
-    {/* Right: Thumbnail */}
-    {game?.thumbnail && (
-      <div className="md:w-64 flex-shrink-0">
-        <img
-          src={game.thumbnail}
-          alt={game.title}
-          className="w-full h-48 md:h-48 object-cover rounded-lg shadow-md"
-        />
-      </div>
-    )}
-  </div>
+              {/* Right: Thumbnail */}
+              {game?.thumbnail && (
+                <div className="md:w-64 flex-shrink-0">
+                  <img
+                    src={game.thumbnail}
+                    alt={game.title}
+                    className="w-full h-48 md:h-48 object-cover rounded-lg shadow-md"
+                  />
+                </div>
+              )}
+            </div>
 
-  {/* Bottom row: Full-width description */}
-  <div className="mt-6">
-    {game?.description ? (
-      <div
-        className="prose max-w-full"
-        dangerouslySetInnerHTML={{ __html: game.description }}
-      ></div>
-    ) : (
-      <p className="text-gray-500 text-sm italic">
-        No description available.
-      </p>
-    )}
-  </div>
+            {/* Bottom row: Full-width description */}
+            <div className="mt-6">
+              {game?.description ? (
+                <div
+                  className="prose max-w-full"
+                  dangerouslySetInnerHTML={{ __html: game.description }}
+                ></div>
+              ) : (
+                <p className="text-gray-500 text-sm italic">
+                  No description available.
+                </p>
+              )}
+            </div>
 
-  {/* --- Static Article Section (Slightly Different Look) --- */}
-  <div className="mt-8 pt-4 border-t border-red-700/50">
-    <div className="bg-gray-800 rounded-lg p-4 text-sm shadow-inner border border-gray-700">
-      <h4 className="text-lg font-semibold mb-2 text-red-400">
-        Source Information
-      </h4>
-      <p className="text-gray-300 leading-relaxed">
-        **All games on this site come from third-party developers.** We don’t own the games; we simply embed them for you to enjoy. Some games may include ads, and we may earn revenue from these ads.
-      </p>
-    </div>
-  </div>
-</div>
+            {/* --- Static Article Section (Slightly Different Look) --- */}
+            <div className="mt-8 pt-4 border-t border-red-700/50">
+              <div className="bg-gray-800 rounded-lg p-4 text-sm shadow-inner border border-gray-700">
+                <h4 className="text-lg font-semibold mb-2 text-red-400">
+                  Source Information
+                </h4>
+                <p className="text-gray-300 leading-relaxed">
+                  **All games on this site come from third-party developers.**
+                  We don’t own the games; we simply embed them for you to enjoy.
+                  Some games may include ads, and we may earn revenue from these
+                  ads.
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* === Recommended Games === */}
           <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white text-center">
@@ -290,78 +295,95 @@ const GameDetails = () => {
 
         {/* === Right Sidebar Ads (Desktop Only) === */}
         <div className="hidden lg:flex flex-col gap-6 sticky top-6 self-start">
-          {/* === Top Ad (Medium Rectangle 300x250) === */}
+          {/* === First Ad Block === */}
           <div className="w-[300px] h-[250px]">
-            {rightAd ? (
-              <Link
-                to={rightAd?.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full h-full overflow-hidden shadow-lg transition-transform duration-300"
-              >
-                <img
-                  src={rightAd?.image}
-                  alt={rightAd?.title}
-                  className="w-full h-full object-cover"
-                />
-              </Link>
+            {rightAds[0] ? (
+              rightAds[0]?.type === "image" ? (
+                <a
+                  href={rightAds[0]?.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-[300px] h-[250px] overflow-hidden shadow-lg"
+                >
+                  <img
+                    src={rightAds[0]?.image}
+                    alt={rightAds[0]?.title}
+                    className="w-full h-full object-cover"
+                  />
+                </a>
+              ) : (
+                <div className="w-[300px] h-[250px] overflow-hidden shadow-lg">
+                  <RenderAdCode code={rightAds[0]?.content} />
+                </div>
+              )
             ) : (
-              <div className="w-full h-full flex justify-center items-center text-gray-600 text-sm italic bg-black">
+              <div className="w-[300px] h-[250px] flex justify-center items-center text-gray-600 text-sm italic bg-black">
                 No ads available
               </div>
             )}
-            {/* Label below first ad */}
             <p className="text-center text-xs font-xs text-gray-500 mt-0 italic">
               Sponsored
             </p>
           </div>
 
+          {/* === Second Ad Block === */}
           <div className="w-[300px] h-[250px]">
-            {rightAd ? (
-              <Link
-                to={rightAd?.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full h-full overflow-hidden shadow-lg transition-transform duration-300"
-              >
-                <img
-                  src={rightAd?.image}
-                  alt={rightAd?.title}
-                  className="w-full h-full object-cover"
-                />
-              </Link>
+            {rightAds[1] ? (
+
+              rightAds[1]?.type === "image" ? (
+                <a
+                  href={rightAds[1]?.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-[300px] h-[250px] overflow-hidden shadow-lg"
+                >
+                  <img
+                    src={rightAds[1]?.image}
+                    alt={rightAds[1]?.title}
+                    className="w-full h-full object-cover"
+                  />
+                </a>
+              ) : (
+                <div className="w-[300px] h-[250px] overflow-hidden shadow-lg">
+                  <RenderAdCode code={rightAds[1]?.content} />
+                </div>
+              )
             ) : (
-              <div className="w-full h-full flex justify-center items-center text-gray-600 text-sm italic bg-black">
+              <div className="w-[300px] h-[250px] flex justify-center items-center text-gray-600 text-sm italic bg-black">
                 No ads available
               </div>
             )}
-            {/* Label below second ad */}
             <p className="text-center text-xs text-gray-500 mt-1 italic">
               Advertisement
             </p>
           </div>
 
+          {/* === Third Ad Block (Only on 2xl screens) === */}
           <div className="hidden 2xl:block w-[300px] h-[250px]">
-            {rightAd ? (
-              <Link
-                to={rightAd?.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full h-full overflow-hidden shadow-lg transition-transform duration-300"
-              >
-                <img
-                  src={rightAd?.image}
-                  alt={rightAd?.title}
-                  className="w-full h-full object-cover"
-                />
-              </Link>
+            {rightAds[2] ? (
+              rightAds[2]?.type === "image" ? (
+                <a
+                  href={rightAds[2]?.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-[300px] h-[250px] overflow-hidden shadow-lg"
+                >
+                  <img
+                    src={rightAds[2]?.image}
+                    alt={rightAds[2]?.title}
+                    className="w-full h-full object-cover"
+                  />
+                </a>
+              ) : (
+                <div className="w-[300px] h-[250px] overflow-hidden shadow-lg">
+                  <RenderAdCode code={rightAds[2]?.content} />
+                </div>
+              )
             ) : (
-              <div className="w-full h-full flex justify-center items-center text-gray-600 text-sm italic bg-black">
+              <div className="w-[300px] h-[250px] flex justify-center items-center text-gray-600 text-sm italic bg-black">
                 No ads available
               </div>
             )}
-
-            {/* Label below ad */}
             <p className="text-center text-xs text-gray-500 mt-1 italic">
               Advertisement
             </p>
