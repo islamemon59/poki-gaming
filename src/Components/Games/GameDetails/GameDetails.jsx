@@ -242,7 +242,7 @@ const GameDetails = () => {
             </div>
 
             {/* --- Static Article Section (Slightly Different Look) --- */}
-            <div className="mt-8 pt-4 border-t border-red-700/50">
+            {/* <div className="mt-8 pt-4 border-t border-red-700/50">
               <div className="bg-gray-800 rounded-lg p-4 text-sm shadow-inner border border-gray-700">
                 <h4 className="text-lg font-semibold mb-2 text-red-400">
                   Source Information
@@ -254,7 +254,7 @@ const GameDetails = () => {
                   ads.
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* === Recommended Games === */}
