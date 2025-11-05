@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router";
 import Loader from "../../../Shared/Loader/Loader";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
@@ -12,6 +12,32 @@ import RenderAdCode from "../RenderAdCode/RenderAdCode";
 const GameDetails = () => {
   const { id } = useParams();
   const [hovered, setHovered] = useState(null);
+
+  const iframeRef = useRef(null);
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    const handleMouseEnter = () => {
+      // Disable scrolling on the whole page when hovering iframe
+      document.body.style.overflow = "hidden";
+    };
+    iframe.contentWindow.document.body.style.overflow = "hidden";
+
+    const handleMouseLeave = () => {
+      // Re-enable scrolling
+      document.body.style.overflow = "";
+    };
+
+    iframe.addEventListener("mouseenter", handleMouseEnter);
+    iframe.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      iframe.removeEventListener("mouseenter", handleMouseEnter);
+      iframe.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
 
   // Fetch all games
   const { data: games } = useQuery({
@@ -144,8 +170,15 @@ const GameDetails = () => {
               <iframe
                 src={game?.gameUrl}
                 title={game?.title}
-                allowFullScreen
-                className="w-full h-full border-0"
+                scrolling="no"
+                ref={iframeRef}
+                className="w-full h-full border-0 select-none pointer-events-auto"
+                style={{
+                  overflow: "hidden",
+                  overscrollBehavior: "none",
+                  touchAction: "none", // disable touch scroll inside iframe
+                }}
+                sandbox="allow-scripts allow-same-origin allow-fullscreen"
               ></iframe>
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center bg-gray-900 text-gray-300">
@@ -221,7 +254,7 @@ const GameDetails = () => {
                   <img
                     src={game.thumbnail}
                     alt={game.title}
-                    className="w-full h-48 md:h-48 object-cover rounded-lg shadow-md"
+                    className="w-full h-48 md:h-56 object-cover rounded-lg shadow-md"
                   />
                 </div>
               )}
@@ -329,7 +362,6 @@ const GameDetails = () => {
           {/* === Second Ad Block === */}
           <div className="w-[300px] h-[250px]">
             {rightAds[1] ? (
-
               rightAds[1]?.type === "image" ? (
                 <a
                   href={rightAds[1]?.link}
