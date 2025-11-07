@@ -1,48 +1,44 @@
 import React from "react";
 import Loader from "../../../Shared/Loader/Loader";
-
+import useGameCategories from "../../../Hooks/useGameCategory";
+import { useNavigate } from "react-router";
+import { GiPistolGun } from "react-icons/gi";
 import {
   FaChess,
   FaDice,
   FaGamepad,
   FaPuzzlePiece,
-  FaFutbol,
   FaCar,
   FaHatWizard,
-  FaGun,
   FaBrain,
   FaMusic,
   FaCubes,
   FaBook,
   FaDragon,
   FaGhost,
-  FaGlobe,
   FaGraduationCap,
   FaDumbbell,
   FaFootballBall,
   FaMap,
-  FaFeatherAlt,
   FaCube,
-  FaRobot,
   FaClock,
   FaCrown,
-  FaStar,
   FaQuestion,
   FaKeyboard,
   FaLayerGroup,
   FaAtom,
   FaRocket,
-  FaMountain,
+  FaSmile,
+  FaHeartbeat,
+  FaUsers,
 } from "react-icons/fa";
-import useGameCategories from "../../../Hooks/useGameCategory";
-import { useNavigate } from "react-router";
 
 const CategoryList = () => {
   const { data: categories, isLoading } = useGameCategories();
   const navigate = useNavigate();
 
   const categoryIcons = {
-    Action: <FaGun color="#E63946" />,
+    Action: <GiPistolGun color="#E63946" />,
     Adventure: <FaMap color="#457B9D" />,
     Arcade: <FaGamepad color="#F77F00" />,
     Board: <FaChess color="#FF6B6B" />,
@@ -53,7 +49,7 @@ const CategoryList = () => {
     Puzzle: <FaPuzzlePiece color="#FFB703" />,
     Racing: <FaCar color="#219EBC" />,
     "Role-Playing": <FaHatWizard color="#9B5DE5" />,
-    Shooting: <FaGun color="#F72585" />,
+    Shooting: <GiPistolGun color="#F72585" />,
     Simulation: <FaCubes color="#4361EE" />,
     Sports: <FaFootballBall color="#4ECDC4" />,
     Strategy: <FaChess color="#FFD93D" />,
