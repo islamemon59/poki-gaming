@@ -12,7 +12,7 @@ import {
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import Loader from "../Loader/Loader";
-import SearchBar from "../../Components/SearchSlider/SearchBar/SearchBar";
+import SearchBar from "../../Components/SearchSlider/SearchBar";
 
 const Navbar = () => {
   const { user, signOutUser, loading } = useAuth();

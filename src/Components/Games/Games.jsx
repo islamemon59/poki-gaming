@@ -1,19 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GameCard from "./GameCard/GameCard";
 import useAuth from "../../Hooks/useAuth";
 import Loader from "../../Shared/Loader/Loader";
 import NoGamesMessage from "./NoGamesMessage/NoGamesMessage";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+
+const fetchGames = async () => {
+  const { data } = await axios.get("https://server.innliv.com/search/games");
+  return data;
+};
 
 const Games = () => {
   const [hovered, setHovered] = useState(null);
-  const { result, isLoading } = useAuth();
+  const { result, setResult } = useAuth();
 
-  if (isLoading) return <Loader />;
+  //Fetch games with React Query
+  const {
+    data: allGames = [],
+    isLoading: gamesLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["allGames"],
+    queryFn: fetchGames,
+  });
 
-  if (!isLoading && result?.length === 0) {
+  //Set games to result once fetched
+  useEffect(() => {
+    if (allGames.length > 0) {
+      setResult(allGames);
+    }
+  }, [allGames, setResult]);
+
+  //Show loader only while React Query is fetching
+  if (gamesLoading) return <Loader />;
+
+  //Error handling
+  if (isError)
+    return <p className="text-center text-red-500">Failed to load games.</p>;
+
+  if (result?.length === 0) {
     return <NoGamesMessage />;
   }
-
   return (
     <div
       className="
