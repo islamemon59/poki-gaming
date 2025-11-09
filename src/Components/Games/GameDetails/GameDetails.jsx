@@ -96,7 +96,7 @@ const GameDetails = () => {
     <div className="relative flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
       {game && (
         <Helmet>
-          <title>{`${game.metaTitle || game.title} | Innliv Gaming`}</title>
+          <title>{`${game.metaTitle || game.title} - Play Online Games For Free`}</title>
           <meta
             name="description"
             content={
