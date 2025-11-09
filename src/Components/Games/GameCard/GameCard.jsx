@@ -9,7 +9,13 @@ const GameCard = ({ game, setHovered, hovered, index, featured }) => {
       onMouseEnter={() => setHovered(index)}
       onMouseLeave={() => setHovered(null)}
     >
-      <Link onClick={() => scrollTo(0, 0)} to={`/games/${game._id}`} className="block w-full h-full">
+      <Link
+        onClick={() => scrollTo(0, 0)}
+        to={`/games/${game?.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${
+          game?._id
+        }`}
+        className="block w-full h-full"
+      >
         {/* Thumbnail */}
         <img
           src={game.thumbnail}

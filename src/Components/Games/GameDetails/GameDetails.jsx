@@ -15,7 +15,6 @@ import RightSection from "./RightSection/RightSection";
 import LeftSection from "./LeftSection/LeftSection";
 
 const GameDetails = () => {
-  const { id } = useParams();
   const [hovered, setHovered] = useState(null);
 
   const iframeRef = useRef(null);
@@ -52,12 +51,16 @@ const GameDetails = () => {
       return data;
     },
   });
+  const { slug, id } = useParams();
+  console.log(slug, id);
+
+  const gameId = id; 
 
   const { data: game, isLoading } = useQuery({
-    queryKey: ["game", id],
-    enabled: !!id, // 👈 Only fetch when id exists
+    queryKey: ["game", gameId],
+    enabled: !!gameId, // 👈 Only fetch when id exists
     queryFn: async () => {
-      const { data } = await axios.get(`https://server.innliv.com/games/${id}`);
+      const { data } = await axios.get(`https://server.innliv.com/games/${gameId}`);
       return data;
     },
   });
