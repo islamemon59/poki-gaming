@@ -1,6 +1,11 @@
 import { Link } from "react-router";
 
 const GameCard = ({ game, setHovered, hovered, index, featured }) => {
+  const slug = game.title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-") // replace spaces/special chars with -
+    .replace(/^-+|-+$/g, ""); // remove starting/ending dashes
+
   return (
     <div
       className={`relative group rounded-xl overflow-hidden shadow-lg block hover:scale-105 transition-transform duration-600 ${
@@ -11,9 +16,7 @@ const GameCard = ({ game, setHovered, hovered, index, featured }) => {
     >
       <Link
         onClick={() => scrollTo(0, 0)}
-        to={`/games/${game?.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${
-          game?._id
-        }`}
+        to={`/games/${slug}-${game._id}`}
         className="block w-full h-full"
       >
         {/* Thumbnail */}

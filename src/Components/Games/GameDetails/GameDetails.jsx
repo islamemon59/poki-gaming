@@ -51,16 +51,17 @@ const GameDetails = () => {
       return data;
     },
   });
-  const { slug, id } = useParams();
-  console.log(slug, id);
 
-  const gameId = id; 
+  const { id: gameId } = useParams(); // now id = "free-fire-675fb2c09b3c83a34e24d0a1"
+
+  // Extract only the actual MongoDB ID
+  const id = gameId.split("-").pop(); // ✅ get last part
 
   const { data: game, isLoading } = useQuery({
-    queryKey: ["game", gameId],
-    enabled: !!gameId, // 👈 Only fetch when id exists
+    queryKey: ["game", id],
+    enabled: !!id, // 👈 Only fetch when id exists
     queryFn: async () => {
-      const { data } = await axios.get(`https://server.innliv.com/games/${gameId}`);
+      const { data } = await axios.get(`https://server.innliv.com/games/${id}`);
       return data;
     },
   });
