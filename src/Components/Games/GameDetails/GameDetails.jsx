@@ -59,7 +59,7 @@ const GameDetails = () => {
     queryKey: ["game", id],
     enabled: !!id, // 👈 Only fetch when id exists
     queryFn: async () => {
-      const { data } = await axios.post(`http://localhost:3070/games/${slug}`, {
+      const { data } = await axios.post(`https://server.innliv.com/${slug}`, {
         id,
       });
       return data;
