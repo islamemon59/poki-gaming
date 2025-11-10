@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "/games/:slug/:id",
+        path: "/games/:slug",
         Component: GameDetails,
       },
        {

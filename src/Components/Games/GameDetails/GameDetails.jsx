@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
 import Loader from "../../../Shared/Loader/Loader";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 import logo from "../../../assets/logo.png";
@@ -52,14 +52,16 @@ const GameDetails = () => {
     },
   });
 
-  const { id } = useParams(); // now id = "free-fire-675fb2c09b3c83a34e24d0a1"
-
-
+  const { slug } = useParams();
+  const location = useLocation();
+  const id = location.state?.id; // 👈 get id secretly from navigation state
   const { data: game, isLoading } = useQuery({
     queryKey: ["game", id],
     enabled: !!id, // 👈 Only fetch when id exists
     queryFn: async () => {
-      const { data } = await axios.get(`https://server.innliv.com/games/${id}`);
+      const { data } = await axios.post(`http://localhost:3070/games/${slug}`, {
+        id,
+      });
       return data;
     },
   });
@@ -94,7 +96,9 @@ const GameDetails = () => {
     <div className="relative flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
       {game && (
         <Helmet>
-          <title>{`${game.metaTitle || game.title} - Play Online Games For Free`}</title>
+          <title>{`${
+            game.metaTitle || game.title
+          } - Play Online Games For Free`}</title>
           <meta
             name="description"
             content={

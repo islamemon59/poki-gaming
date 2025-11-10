@@ -16,7 +16,8 @@ const GameCard = ({ game, setHovered, hovered, index, featured }) => {
     >
       <Link
         onClick={() => scrollTo(0, 0)}
-        to={`/games/${slug}/${game._id}`}
+        to={`/games/${slug}`}
+        state={{ id: game._id }}
         className="block w-full h-full"
       >
         {/* Thumbnail */}
