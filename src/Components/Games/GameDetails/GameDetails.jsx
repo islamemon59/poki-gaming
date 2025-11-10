@@ -52,10 +52,8 @@ const GameDetails = () => {
     },
   });
 
-  const { id: gameId } = useParams(); // now id = "free-fire-675fb2c09b3c83a34e24d0a1"
+  const { id } = useParams(); // now id = "free-fire-675fb2c09b3c83a34e24d0a1"
 
-  // Extract only the actual MongoDB ID
-  const id = gameId.split("-").pop(); // ✅ get last part
 
   const { data: game, isLoading } = useQuery({
     queryKey: ["game", id],
