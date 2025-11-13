@@ -75,7 +75,12 @@ const Footer = () => {
         "Privacy Policy",
         "Terms and Conditions",
       ],
-      to: ["/about_us", "/contact_us", "/privacy_policy", "/terms_and_condition"],
+      to: [
+        "/about-us",
+        "/contact-us",
+        "/privacy-policy",
+        "/terms-and-condition",
+      ],
     },
   ];
 

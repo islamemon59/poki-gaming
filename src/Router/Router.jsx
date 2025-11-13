@@ -25,44 +25,42 @@ export const router = createBrowserRouter([
         path: "/games/:slug",
         Component: GameDetails,
       },
-       {
+      {
         path: "/profile",
         Component: UserProfile,
       },
-       {
+      {
         path: "/updateProfile",
         Component: UpdateProfile,
       },
-       {
+      {
         path: "/category/:category",
         Component: CategoryGames,
       },
-
     ],
   },
-        {
-        path: "/login",
-        Component: Login,
-      },
-        {
-        path: "/register",
-        Component: Register,
-      },
-        {
-        path: "/about_us",
-        Component: AboutUs,
-      },
-        {
-        path: "/terms_and_condition",
-        Component: TermsAndConditions,
-      },
-        {
-        path: "/privacy_policy",
-        Component: PrivacyPolicy,
-      },
-        {
-        path: "/contact_us",
-        Component: ContactUs,
-      },
-       
+  {
+    path: "/login",
+    Component: Login,
+  },
+  {
+    path: "/register",
+    Component: Register,
+  },
+  {
+    path: "/about-us",
+    Component: AboutUs,
+  },
+  {
+    path: "/terms-and-condition",
+    Component: TermsAndConditions,
+  },
+  {
+    path: "/privacy-policy",
+    Component: PrivacyPolicy,
+  },
+  {
+    path: "/contact-us",
+    Component: ContactUs,
+  },
 ]);
