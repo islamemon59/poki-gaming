@@ -6,13 +6,13 @@ import Loader from "../../../Shared/Loader/Loader";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 import logo from "../../../assets/logo.png";
 import CategoryList from "../CategoryList/CategoryList";
-import { Helmet } from "react-helmet-async";
 import GameDescription from "./GameDescription/GameDescription";
 import OthersGames from "./OthersGames/OthersGames";
 import GameFrame from "./GameFrame/GameFrame";
 import BottomSection from "./BottomSection/BottomSection";
 import RightSection from "./RightSection/RightSection";
 import LeftSection from "./LeftSection/LeftSection";
+import Meta from "../../Meta/Meta";
 
 const GameDetails = () => {
   const [hovered, setHovered] = useState(null);
@@ -80,7 +80,13 @@ const GameDetails = () => {
 
   useDynamicTitle(`${game?.title || "title"}`);
 
-  const otherGames = games?.filter((g) => g?._id !== id);
+  const normalizeSlug = (title) =>
+    title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+  const otherGames = games?.filter((g) => normalizeSlug(g?.title) !== slug);
 
   if (isLoading) return <Loader />;
 
@@ -98,33 +104,35 @@ const GameDetails = () => {
   return (
     <div className="relative flex flex-col items-center bg-black min-h-screen p-4 lg:pt-0">
       {game && (
-        <Helmet>
-          <title>{`${
-            game.metaTitle || game.title
-          } - Play Online Games For Free`}</title>
-          <meta
-            name="description"
-            content={
-              game.metaDescription ||
-              game.description ||
-              "Play exciting games on Innliv Gaming."
-            }
-          />
-          <meta
-            name="keywords"
-            content={game.metaKeywords || "games, online, play"}
-          />
-          <meta property="og:title" content={game.metaTitle || game.title} />
-          <meta
-            property="og:description"
-            content={game.metaDescription || game.description}
-          />
-          <meta property="og:image" content={game.thumbnail} />
-          <meta property="og:url" content={window.location.href} />
-          <meta name="twitter:card" content="summary_large_image" />
-          {/* Canonical URL */}
-          <link rel="canonical" href={`https://innliv.com/games/${slug}`} />
-        </Helmet>
+        <Meta
+          title={`${
+            game?.metaTitle || game?.title
+          } - Play Online Games For Free`}
+          description={game?.metaDescription || game?.description}
+          keywords={game?.metaKeywords || "games, online, play"}
+          url={`https://innliv.com/games/${slug}`}
+          image={game?.thumbnail}
+        />
+        // <Helmet>
+        //   <title>{`${
+        //     game.metaTitle || game.title
+        //   } - Play Online Games For Free`}</title>
+        //   <meta name="description" content={game.metaDescription} />
+        //   <meta
+        //     name="keywords"
+        //     content={game.metaKeywords || "games, online, play"}
+        //   />
+        //   <meta property="og:title" content={game.metaTitle || game.title} />
+        //   <meta
+        //     property="og:description"
+        //     content={game?.metaDescription || game.description}
+        //   />
+        //   <meta property="og:image" content={game.thumbnail} />
+        //   <meta property="og:url" content={window.location.href} />
+        //   <meta name="twitter:card" content="summary_large_image" />
+        //   {/* Canonical URL */}
+        //   <link rel="canonical" href={`https://innliv.com/games/${slug}`} />
+        // </Helmet>
       )}
       {/* === Layout Wrapper === */}
       <div className="flex flex-col lg:flex-row w-full gap-4">

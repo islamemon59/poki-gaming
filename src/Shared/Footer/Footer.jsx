@@ -181,7 +181,7 @@ const Footer = () => {
               <FaPinterestP className="text-black group-hover:text-white w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
             <Link
-              to="https://www.youtube.com/channel/UCS23cj0CSU7yu1NX_77reAw"
+              to="https://www.youtube.com/@InNliv"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white rounded-full group hover:bg-red-600 transition-all duration-300"

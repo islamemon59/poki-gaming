@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const OthersGames = ({otherGames, hovered, setHovered}) => {
+const OthersGames = ({ otherGames, hovered, setHovered }) => {
   return (
     <div>
       <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white text-center">
@@ -11,7 +11,11 @@ const OthersGames = ({otherGames, hovered, setHovered}) => {
         {otherGames?.map((g) => (
           <Link
             key={g?._id}
-            to={`/games/${g?._id}`}
+            to={`/games/${g.title
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/^-+|-+$/g, "")}`}
+            state={{ id: g._id }}
             onClick={() => scrollTo(0, 0)}
             className="rounded-xl overflow-hidden shadow-md relative group aspect-square"
             onMouseEnter={() => setHovered(g?._id)}
