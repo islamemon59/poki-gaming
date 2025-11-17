@@ -59,9 +59,12 @@ const GameDetails = () => {
     queryKey: ["game", id],
     enabled: !!id, // 👈 Only fetch when id exists
     queryFn: async () => {
-      const { data } = await axios.post(`https://server.innliv.com/games/${slug}`, {
-        id,
-      });
+      const { data } = await axios.post(
+        `https://server.innliv.com/games/${slug}`,
+        {
+          id,
+        }
+      );
       return data;
     },
   });
@@ -119,6 +122,8 @@ const GameDetails = () => {
           <meta property="og:image" content={game.thumbnail} />
           <meta property="og:url" content={window.location.href} />
           <meta name="twitter:card" content="summary_large_image" />
+          {/* Canonical URL */}
+          <link rel="canonical" href={`https://innliv.com/games/${slug}`} />
         </Helmet>
       )}
       {/* === Layout Wrapper === */}

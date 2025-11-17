@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import logo from "../../../assets/logo.png";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
+import { Helmet } from "react-helmet-async";
 
 const PrivacyPolicy = () => {
   useDynamicTitle("Privacy Policy");
@@ -13,6 +14,14 @@ const PrivacyPolicy = () => {
           "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2b0000 100%)",
       }}
     >
+      <Helmet>
+        <meta
+          name="description"
+          content="Keeping your information safe is not just something we have to do — it’s how we operate. This Privacy Policy explains what information we collect, why we collect it, how we use it, and how we protect it."
+        />
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://innliv.com/privacy-policy" />
+      </Helmet>
       {/* Header + Logo */}
       <div className="max-w-6xl mx-auto mb-10 flex justify-between items-center">
         <Link
@@ -87,16 +96,42 @@ const PrivacyPolicy = () => {
             improvement.
           </p>
         </section>
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold text-red-500 mb-4">
+            Children’s Privacy
+          </h2>
+          <p className="text-gray-300 leading-relaxed">
+            Our Service does not address anyone under the age of 18
+            (“Children”).
+            <br />
+            <br />
+            We do not knowingly collect personally identifiable information from
+            anyone under the age of 18. If you are a parent or guardian and you
+            are aware that your Children has provided us with Personal Data,
+            please contact us. If we become aware that we have collected
+            Personal Data from children without verification of parental
+            consent, we take steps to remove that information from our servers.
+          </p>
+        </section>
 
         {/* Advertising */}
         <section className="mb-8">
           <h2 className="text-2xl font-bold text-red-500 mb-4">Advertising</h2>
           <p className="text-gray-300 leading-relaxed">
-            Advertising supports free gameplay and new content. We work with
-            trusted partners to display relevant ads while respecting user
-            choices. Technologies like cookies or device identifiers may be used
-            to personalize ads, but users can control preferences through device
-            settings.
+            We may display online advertisements and we may share aggregated and
+            non-identifying information about our customers that we or our
+            advertisers collect through your use of the Website and Services. We
+            do not share personally identifiable information about individual
+            customers with advertisers. In some instances, we may use this
+            aggregated and non-identifying information to deliver tailored
+            advertisements to the intended audience.
+            <br />
+            <br />
+            We may also permit certain third-party companies to help us tailor
+            advertising that we think may be of interest to users and to collect
+            and use other data about User activities on the Website. These
+            companies may deliver ads that might place cookies and otherwise
+            track User behavior.
           </p>
         </section>
 
@@ -150,14 +185,14 @@ const PrivacyPolicy = () => {
         <section>
           <h2 className="text-2xl font-bold text-red-500 mb-4">Contact</h2>
           <p className="text-gray-300 leading-relaxed">
-            If you have any questions, feel free to contact us at{" "}
+            If you have any questions, feel free to{" "}
             <Link
-              to="https://innliv.com/"
+              to="/contact-us"
               className="text-red-500 underline hover:text-white transition-all duration-300 font-semibold"
             >
-              innliv.com
-            </Link>
-            .
+              contact us
+            </Link>{" "}
+            at <span>innliv.com</span>.
           </p>
         </section>
       </div>
