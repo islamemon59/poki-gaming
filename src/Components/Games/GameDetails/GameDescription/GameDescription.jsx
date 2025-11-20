@@ -9,7 +9,7 @@ const GameDescription = ({ game }) => {
         <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
           {/* Left: Title & Category */}
           <div className="flex-1">
-            <h3 className="text-2xl font-bold mb-2">{game?.title}</h3>
+            <h1 className="text-2xl font-bold mb-2">{game?.title}</h1>
             {game?.category && (
               <p className="text-sm font-semibold text-red-500">
                 Category: <span className="text-white">{game?.category}</span>

@@ -1,12 +1,25 @@
 // src/Components/Meta.jsx
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router"; // <-- IMPORT THIS
 
 const Meta = ({ title, description, keywords, url, image }) => {
+  const location = useLocation(); // <-- CALL THIS HOOK
+  const baseUrl = "https://innliv.com"; // <-- DEFINE BASE URL
+
   const defaultTitle = "Innliv Free Gaming Online";
   const defaultDescription =
     "We are obsessed with the best free online games obviously, respect the daylights out of our players, and yeah, we are not shy about ruffling a few feathers if that means making something truly epic.";
   const defaultKeywords =
     "free online games,free online games for kids to play,free online games for pc,play free games online without downloading";
+
+  // 1. Calculate the canonical URL dynamically.
+  // This uses the current route (e.g., /privacy-policy) and strips off any parameters
+  // or potential trailing slashes if they were present in the path.
+  const canonicalUrl = `${baseUrl}${location.pathname.replace(/\/$/, "")}`;
+
+  // 2. Use the dynamically calculated URL if the 'url' prop is not passed.
+  // The 'url' prop is included for backward compatibility, but we prioritize the calculated one.
+  const finalCanonicalUrl = url || canonicalUrl;
 
   return (
     <Helmet>
@@ -25,7 +38,8 @@ const Meta = ({ title, description, keywords, url, image }) => {
         property="og:description"
         content={description || defaultDescription}
       />
-      <meta property="og:url" content={url} />
+      {/* Use the dynamically generated URL for OG */}
+      <meta property="og:url" content={finalCanonicalUrl} />
       <meta property="og:image" content={image} />
 
       {/* Twitter */}
@@ -37,8 +51,8 @@ const Meta = ({ title, description, keywords, url, image }) => {
       />
       <meta name="twitter:image" content={image} />
 
-      {/* Canonical */}
-      <link rel="canonical" href={url} />
+      {/* Canonical: Use the dynamically generated URL */}
+      <link rel="canonical" href={finalCanonicalUrl} />
     </Helmet>
   );
 };

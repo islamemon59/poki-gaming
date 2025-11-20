@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import logo from "../../../assets/logo.png";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 import { Helmet } from "react-helmet-async";
+import Meta from "../../../Components/Meta/Meta";
 
 const AboutUs = () => {
   useDynamicTitle("About Us");
@@ -14,15 +15,8 @@ const AboutUs = () => {
           "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2b0000 100%)",
       }}
     >
-      <Helmet>
-        <meta
-          name="description"
-          content="innliv.com began its journey in 2025 with a passionate team of dreamers who believed that gaming could be more than entertainment."
-        />
-
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://innliv.com/about-us" />
-      </Helmet>
+      <Meta description={"innliv.com began its journey in 2025 with a passionate team of dreamers who believed that gaming could be more than entertainment."}>
+      </Meta>
       {/* Header + Logo */}
       <div className="max-w-6xl mx-auto mb-10 flex justify-between items-center">
         <Link

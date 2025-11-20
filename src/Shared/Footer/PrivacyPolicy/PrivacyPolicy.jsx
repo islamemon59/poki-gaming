@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import logo from "../../../assets/logo.png";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
-import { Helmet } from "react-helmet-async";
+import Meta from "../../../Components/Meta/Meta";
 
 const PrivacyPolicy = () => {
   useDynamicTitle("Privacy Policy");
@@ -14,14 +14,8 @@ const PrivacyPolicy = () => {
           "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2b0000 100%)",
       }}
     >
-      <Helmet>
-        <meta
-          name="description"
-          content="Keeping your information safe is not just something we have to do — it’s how we operate. This Privacy Policy explains what information we collect, why we collect it, how we use it, and how we protect it."
-        />
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://innliv.com/privacy-policy" />
-      </Helmet>
+      <Meta description={"Keeping your information safe is not just something we have to do — it’s how we operate. This Privacy Policy explains what information we collect, why we collect it, how we use it, and how we protect it."}>
+      </Meta>
       {/* Header + Logo */}
       <div className="max-w-6xl mx-auto mb-10 flex justify-between items-center">
         <Link

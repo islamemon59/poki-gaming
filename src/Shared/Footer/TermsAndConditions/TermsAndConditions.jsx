@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import logo from "../../../assets/logo.png";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
-import { Helmet } from "react-helmet-async";
+import Meta from "../../../Components/Meta/Meta";
 
 const TermsAndConditions = () => {
   useDynamicTitle("Terms & Conditions");
@@ -14,15 +14,11 @@ const TermsAndConditions = () => {
           "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2b0000 100%)",
       }}
     >
-      <Helmet>
-        <meta
-          name="description"
-          content="Welcome to innliv.com. By using our website, games, or services, you agree to these Terms and Conditions. Please read them carefully before continuing."
-        />
-
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://innliv.com/terms-and-condition" />
-      </Helmet>
+      <Meta
+        description={
+          "Welcome to innliv.com. By using our website, games, or services, you agree to these Terms and Conditions. Please read them carefully before continuing."
+        }
+      ></Meta>
       {/* Header + Logo */}
       <div className="max-w-6xl mx-auto mb-10 flex justify-between items-center">
         <Link

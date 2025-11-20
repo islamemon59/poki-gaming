@@ -62,7 +62,15 @@ const CategoryGames = () => {
         {games.map((game) => (
           <div
             key={game._id}
-            onClick={() => navigate(`/games/${game._id}`)}
+            onClick={() =>
+              navigate(
+                `/games/${game.title
+                  .toLowerCase()
+                  .replace(/[^a-z0-9]+/g, "-")
+                  .replace(/^-+|-+$/g, "")}`,
+                { state: { id: game._id } }
+              )
+            }
             className="relative group cursor-pointer overflow-hidden hover:scale-105 rounded-xl shadow-md hover:shadow-lg transition-all duration-600 bg-[#111] aspect-square"
           >
             {/* Game Image */}

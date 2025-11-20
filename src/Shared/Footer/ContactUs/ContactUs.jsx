@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import logo from "../../../assets/logo.png";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 import Swal from "sweetalert2";
-import { Helmet } from "react-helmet-async";
+import Meta from "../../../Components/Meta/Meta";
 
 const ContactUs = () => {
   useDynamicTitle("Contact Us");
@@ -40,14 +40,8 @@ const ContactUs = () => {
           "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2b0000 100%)",
       }}
     >
-      <Helmet>
-        <meta
-          name="description"
-          content="If you have any questions, feel free to contact us."
-        />
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://innliv.com/contact-us" />
-      </Helmet>
+      <Meta description={"If you have any questions, feel free to contact us."}>
+      </Meta>
       {/* Header + Logo */}
       <div className="w-full max-w-6xl flex justify-between items-center mb-10">
         <Link
