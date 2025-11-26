@@ -151,8 +151,6 @@ const Footer = () => {
             </button>
           </div>
 
-          {/* Social Media or Success Message */}
-
           <div className="flex justify-center sm:justify-end space-x-3 sm:space-x-4 mt-6">
             <Link
               to="https://www.instagram.com/innliv/"
