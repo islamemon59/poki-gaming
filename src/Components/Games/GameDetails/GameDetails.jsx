@@ -53,12 +53,11 @@ const GameDetails = () => {
   });
 
   const { slug } = useParams();
-  console.log(slug);
 
   const { data: game, isLoading } = useQuery({
     queryKey: ["game", slug],
     queryFn: async () => {
-      const { data } = await axios.get(`http://localhost:3070/games/${slug}`);
+      const { data } = await axios.get(`https://server.innliv.com/games/${slug}`);
       return data;
     },
   });
