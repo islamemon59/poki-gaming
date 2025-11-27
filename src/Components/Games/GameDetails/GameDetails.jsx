@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation, useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import Loader from "../../../Shared/Loader/Loader";
 import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 import logo from "../../../assets/logo.png";
@@ -53,18 +53,12 @@ const GameDetails = () => {
   });
 
   const { slug } = useParams();
-  const location = useLocation();
-  const id = location.state?.id; // 👈 get id secretly from navigation state
+  console.log(slug);
+
   const { data: game, isLoading } = useQuery({
-    queryKey: ["game", id],
-    enabled: !!id, // 👈 Only fetch when id exists
+    queryKey: ["game", slug],
     queryFn: async () => {
-      const { data } = await axios.post(
-        `https://server.innliv.com/games/${slug}`,
-        {
-          id,
-        }
-      );
+      const { data } = await axios.get(`http://localhost:3070/games/${slug}`);
       return data;
     },
   });
