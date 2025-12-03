@@ -31,11 +31,12 @@ const AboutInnLiv = () => {
   return (
     <section className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 py-16 px-6 sm:px-10 lg:px-24 text-white">
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-red-500 mb-4">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-red-500 mb-4">
           About InnLiv
-        </h2>
+        </h1>
         <p className="text-gray-300 text-lg">
-          Discover the world of free gaming — no downloads, no limits, just pure fun!
+          Discover the world of free gaming — no downloads, no limits, just pure
+          fun!
         </p>
       </div>
 
@@ -43,12 +44,18 @@ const AboutInnLiv = () => {
         {sections.map((sec, index) => (
           <div
             key={index}
-            className={`flex flex-col lg:flex-row ${index % 2 !== 0 ? "lg:flex-row-reverse" : ""} items-center gap-10`}
+            className={`flex flex-col lg:flex-row ${
+              index % 2 !== 0 ? "lg:flex-row-reverse" : ""
+            } items-center gap-10`}
           >
             {/* Text Section */}
             <div className="lg:w-1/2">
-              <h3 className="text-2xl md:text-3xl font-bold text-red-400 mb-4">{sec.title}</h3>
-              <p className="text-gray-300 leading-relaxed text-justify">{sec.text}</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-red-400 mb-4">
+                {sec.title}
+              </h3>
+              <p className="text-gray-300 leading-relaxed text-justify">
+                {sec.text}
+              </p>
             </div>
 
             {/* Visual Section */}

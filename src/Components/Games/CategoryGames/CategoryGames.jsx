@@ -53,9 +53,9 @@ const CategoryGames = () => {
 
   return (
     <div className="p-6 bg-[#0a0a0a] min-h-screen">
-      <h2 className="text-2xl font-semibold mb-8 text-center text-white">
+      <h1 className="text-2xl font-semibold mb-8 text-center text-white">
         Category: <span className="text-red-500">{category}</span>
-      </h2>
+      </h1>
 
       {/* Game Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
